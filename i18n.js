@@ -2,11 +2,12 @@
 window.I18N = {
 he: {
   appName: 'אולפן הקריוקי שלי', company: 'כתר טכנולוגיות', install: 'התקן',
-  welcomeTitle: 'ברוכים הבאים לאולפן הקריוקי שלך', welcomeSub: 'מעלים שיר או מדביקים קישור מיוטיוב – ומקבלים פלייבק, מילים מתוזמנות והקלטה עם ציון.', startNow: 'מתחילים',
+  welcomeTitle: 'ברוכים הבאים לאולפן הקריוקי שלך', welcomeSub: 'מעלים שיר או מדביקים קישור מיוטיוב – ומקבלים פלייבק, מילים מתוזמנות והקלטה עם ציון.', startNow: 'מתחילים ←',
   homeTitle: 'מה נעשה היום?', tabHome: '🏠 תפריט ראשי',
-  mStudio: 'מעלים שיר, מפרידים, שרים ומקליטים', mLibrary: 'כל השירים ששמרת, מועדפים ורשימות השמעה', mParty: 'תור זמרים לאירוע – כל אחד בתורו במסך מלא',
+  mStudio: 'מעלים שיר, מפרידים, שרים ומקליטים', mLibrary: 'כל השירים ששמרת, מועדפים ורשימות השמעה', mParty: 'ערב שירה עם חברים ומשפחה – כל אחד שר בתורו',
+  feat1: 'הפרדת שירה מהמוזיקה', feat2: 'מילים מתוזמנות', feat3: 'ציון לשירה',
   mPractice: 'חימום קולי, מד גובה צליל ומטרונום', mGuide: 'הסבר צעד אחר צעד איך משתמשים', mSettings: 'שרת, שמירה במחשב, יצירת קשר ומנהל',
-  tabStudio: 'אולפן', tabLibrary: 'השירים שלי', tabParty: 'מצב שמחה', tabPractice: 'תרגול', tabGuide: 'מדריך', tabSettings: 'הגדרות',
+  tabStudio: 'אולפן', tabLibrary: 'השירים שלי', tabParty: 'ערב קריוקי', tabPractice: 'תרגול', tabGuide: 'מדריך', tabSettings: 'הגדרות',
   newSong: 'שיר חדש', separation: 'הפרדה:', mode2: 'שירה + פלייבק', mode4: '4 ערוצים (שירה, תופים, בס, כלים)',
   mode2short: '2 ערוצים', mode4short: '4 ערוצים',
   dropHere: 'גרור לכאן קובץ שיר, או לחץ לבחירה', dropHint: 'MP3, WAV, M4A, OGG, FLAC – עד 10 דקות', pickFile: 'בחר קובץ',
@@ -49,7 +50,7 @@ he: {
   playlists: 'רשימות השמעה', newPlaylist: '+ רשימה חדשה', plName: 'שם הרשימה', plWhich: 'לאיזו רשימה להוסיף?', myPlaylist: 'הרשימה שלי',
   addedTo: 'נוסף ל"{n}" ✓', songs: 'שירים', playAll: 'נגן הכל', noPlaylists: 'אין עדיין רשימות.', plDone: 'הרשימה הסתיימה',
   myProgress: 'ההתקדמות שלי', noScores: 'הקלט שירים כדי לראות את ההתקדמות שלך.', progressTxt: 'השבוע: {n} הקלטות, ממוצע {avg}. ממוצע כללי: {all}.',
-  partyTitle: 'מצב שמחה – תור זמרים', partyHint: 'כל אורח בוחר שיר מהתיקייה ונכנס לתור. לוחצים "הזמר הבא" והשיר עולה במסך מלא.',
+  partyTitle: 'ערב קריוקי – תור זמרים', partyHint: 'כל משתתף בוחר שיר מהתיקייה ונכנס לתור. לוחצים "הזמר הבא" והשיר עולה במסך מלא.',
   singerName: 'שם הזמר', addToQueue: 'הוסף לתור', nextSinger: '▶ הזמר הבא', clearQueue: 'נקה תור', queueEmpty: 'התור ריק', guest: 'אורח',
   warmups: 'חימום קולי', warmupHint: 'לחץ על תרגיל, האזן, ושיר אחריו. הפעל מיקרופון כדי לראות איזה תו אתה שר.',
   micOn: 'הפעל מיקרופון', micOff: 'כבה מיקרופון', startStop: 'הפעל / עצור',
@@ -72,16 +73,17 @@ he: {
   <h3>4. מילים</h3><p>"תמלל אוטומטית" מוציא מילים מתוזמנות מילה-מילה. אפשר גם להקליד ידנית ואז "תזמון בהקשה": מנגנים ולוחצים רווח בתחילת כל שורה. לדואט כותבים A: או B: בתחילת שורה.</p>
   <h3>5. הקלטה</h3><p>לחץ "התחל להקליט" (עדיף עם אוזניות). הקו הוורוד הוא הקול שלך, האפור – הזמר המקורי. בסוף תקבל ציון. סמן ניסיונות לייצוא והורד MP3, WAV או סרטון.</p>
   <h3>6. התיקייה שלי</h3><p>"שמור בתיקייה" שומר את השיר במחשב לתמיד – גם בלי אינטרנט. אפשר תגיות, מועדפים, רשימות השמעה ופרופילים לכל בן משפחה.</p>
-  <h3>7. מצב שמחה</h3><p>מוסיפים זמרים ושירים לתור, ובכל פעם לוחצים "הזמר הבא".</p>
+  <h3>7. ערב קריוקי</h3><p>מוסיפים זמרים ושירים לתור, ובכל פעם לוחצים "הזמר הבא".</p>
   <h3>קיצורי מקשים</h3><p>רווח – נגן/עצור (ובזמן תזמון – סימון שורה).</p>`
 },
 en: {
   appName: 'My Karaoke Studio', company: 'Keter Technologies', install: 'Install',
-  welcomeTitle: 'Welcome to your Karaoke Studio', welcomeSub: 'Upload a song or paste a YouTube link – get a backing track, synced lyrics and recording with a score.', startNow: 'Get started',
+  welcomeTitle: 'Welcome to your Karaoke Studio', welcomeSub: 'Upload a song or paste a YouTube link – get a backing track, synced lyrics and recording with a score.', startNow: 'Get started →',
   homeTitle: 'What shall we do today?', tabHome: '🏠 Main menu',
-  mStudio: 'Upload a song, separate it, sing and record', mLibrary: 'All your saved songs, favorites and playlists', mParty: 'Singer queue for events – each in turn, full screen',
+  mStudio: 'Upload a song, separate it, sing and record', mLibrary: 'All your saved songs, favorites and playlists', mParty: 'A singing evening with friends and family – everyone takes a turn',
+  feat1: 'Vocal separation', feat2: 'Synced lyrics', feat3: 'Singing score',
   mPractice: 'Vocal warm-up, pitch meter and metronome', mGuide: 'Step-by-step instructions', mSettings: 'Server, offline storage, contact and admin',
-  tabStudio: 'Studio', tabLibrary: 'My Songs', tabParty: 'Party Mode', tabPractice: 'Practice', tabGuide: 'Guide', tabSettings: 'Settings',
+  tabStudio: 'Studio', tabLibrary: 'My Songs', tabParty: 'Karaoke Night', tabPractice: 'Practice', tabGuide: 'Guide', tabSettings: 'Settings',
   newSong: 'New song', separation: 'Separation:', mode2: 'Vocals + backing track', mode4: '4 stems (vocals, drums, bass, other)',
   mode2short: '2 stems', mode4short: '4 stems',
   dropHere: 'Drop a song file here, or click to choose', dropHint: 'MP3, WAV, M4A, OGG, FLAC – up to 10 minutes', pickFile: 'Choose file',
@@ -124,7 +126,7 @@ en: {
   playlists: 'Playlists', newPlaylist: '+ New playlist', plName: 'Playlist name', plWhich: 'Add to which playlist?', myPlaylist: 'My playlist',
   addedTo: 'Added to "{n}" ✓', songs: 'songs', playAll: 'Play all', noPlaylists: 'No playlists yet.', plDone: 'Playlist finished',
   myProgress: 'My progress', noScores: 'Record songs to see your progress.', progressTxt: 'This week: {n} recordings, average {avg}. Overall average: {all}.',
-  partyTitle: 'Party mode – singer queue', partyHint: 'Each guest picks a song from the library and joins the queue. Press "Next singer" to start it full screen.',
+  partyTitle: 'Karaoke night – singer queue', partyHint: 'Each guest picks a song from the library and joins the queue. Press "Next singer" to start it full screen.',
   singerName: 'Singer name', addToQueue: 'Add to queue', nextSinger: '▶ Next singer', clearQueue: 'Clear queue', queueEmpty: 'The queue is empty', guest: 'Guest',
   warmups: 'Vocal warm-up', warmupHint: 'Click an exercise, listen, and sing after it. Turn on the mic to see which note you sing.',
   micOn: 'Turn on mic', micOff: 'Turn off mic', startStop: 'Start / stop',
@@ -147,7 +149,7 @@ en: {
   <h3>4. Lyrics</h3><p>"Auto-transcribe" creates word-by-word synced lyrics. Or type them and use "Tap to sync": play and press Space at the start of each line. For duets start lines with A: or B:.</p>
   <h3>5. Record</h3><p>Click "Start recording" (headphones recommended). Pink line = you, grey = original singer. You get a score at the end. Tick takes and export MP3, WAV or video.</p>
   <h3>6. My songs</h3><p>"Save to my songs" keeps the song on your computer, even offline. Tags, favorites, playlists and family profiles.</p>
-  <h3>7. Party mode</h3><p>Add singers and songs to the queue and press "Next singer" each time.</p>
+  <h3>7. Karaoke night</h3><p>Add singers and songs to the queue and press "Next singer" each time.</p>
   <h3>Shortcuts</h3><p>Space – play/pause (during sync – mark a line).</p>`
 },
 yi: {

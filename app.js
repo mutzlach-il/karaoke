@@ -10,7 +10,7 @@ const store = {
   get(k, d) { try { const v = localStorage.getItem('kp_' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem('kp_' + k, JSON.stringify(v)); } catch {} }
 };
-let LANG = store.get('lang', 'he');
+let LANG = store.get('lang', 'he') === 'en' ? 'en' : 'he';
 function t(k, vars) {
   const d = (window.I18N[LANG] && window.I18N[LANG][k]) || window.I18N.he[k] || k;
   return vars ? d.replace(/\{(\w+)\}/g, (_, n) => vars[n] ?? '') : d;
@@ -22,7 +22,7 @@ function applyLang() {
   $$('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   document.title = t('appName') + ' – ' + t('company');
   $('#langSel').value = LANG;
-  renderGuide();
+  renderGuide(); renderWarmups(); setPageTitle();
   if (song) { renderMixer(); renderLyrics(true); renderTakes(); updateMeta(); }
   renderLibrary();
 }
@@ -114,15 +114,22 @@ const DB = {
 };
 
 /* ===================== ניווט ===================== */
+const PAGE_TITLES = { studio: 'tabStudio', library: 'tabLibrary', party: 'tabParty', practice: 'tabPractice', guide: 'tabGuide', settings: 'tabSettings' };
+function curView() { return (location.hash || '#welcome').slice(1).split('?')[0] || 'welcome'; }
+function setPageTitle() { const k = PAGE_TITLES[curView()]; if ($('#pageTitle')) $('#pageTitle').textContent = k ? t(k) : ''; }
 function show(view) {
-  $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+  if (!document.getElementById('view-' + view)) view = 'home';
+  document.body.classList.toggle('on-welcome', view === 'welcome');
+  $('#tabs').classList.toggle('hidden', view === 'home');
   $$('main > section').forEach(s => s.classList.toggle('hidden', s.id !== 'view-' + view));
+  setPageTitle(); window.scrollTo(0, 0);
   if (view === 'library') renderLibrary();
   if (view === 'party') renderParty();
   if (view === 'settings') renderSettings();
 }
 $$('#tabs button').forEach(b => b.onclick = () => { location.hash = b.dataset.view; });
-window.addEventListener('hashchange', () => show((location.hash || '#studio').slice(1).split('?')[0] || 'studio'));
+window.addEventListener('hashchange', () => show(curView()));
+$('#startBtn').onclick = () => { location.hash = 'home'; };
 
 /* ===================== שליחה לשרת ===================== */
 let MODE = '2';
@@ -1127,8 +1134,9 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.se
   const f = store.get('font', null); if (f) { $('#fontSize').value = f; document.documentElement.style.setProperty('--lyric', f + 'px'); }
   const bg = store.get('bg', ''); if (bg && bg !== 'img') { $('#bgSel').value = bg; $('#lyrics').classList.add(bg); }
   applyLang(); renderWarmups(); discoverServer();
-  show((location.hash || '#studio').slice(1) || 'studio');
   const qs = new URLSearchParams(location.search);
+  if (qs.get('job')) history.replaceState(null, '', location.pathname + location.search + '#studio');
+  show(curView());
   if (qs.get('server')) { store.set('server', qs.get('server')); history.replaceState(null, '', location.pathname + location.hash); }
   if (qs.get('job')) {
     const srv = qs.get('srv') || server();
@@ -1137,5 +1145,5 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.se
       if (j.status === 'done') { setJob(100, '✅', 'ok'); await openSong(songFromJob(j, srv)); }
       else { const prev = store.get('server'); store.set('server', srv); await poll(j.id); if (prev) store.set('server', prev); }
     } catch (e) { setJob(0, '❌ ' + e.message, 'err'); }
-  } else onboarding();
+  }
 })();

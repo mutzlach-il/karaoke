@@ -15,18 +15,14 @@
 </head>
 <body>
 <header class="top noprint">
-  <a class="logo" href="#studio"><span>🎤</span><span class="k" data-i18n="appName">אולפן הקריוקי</span></a>
+  <a class="logo" href="#home"><span>🎤</span><span class="k" data-i18n="appName">אולפן הקריוקי שלי</span></a>
   <nav class="tabs" id="tabs">
-    <button data-view="studio" class="on" data-i18n="tabStudio">אולפן</button>
-    <button data-view="library" data-i18n="tabLibrary">השירים שלי</button>
-    <button data-view="party" data-i18n="tabParty">מצב שמחה</button>
-    <button data-view="practice" data-i18n="tabPractice">תרגול</button>
-    <button data-view="guide" data-i18n="tabGuide">מדריך</button>
-    <button data-view="settings" data-i18n="tabSettings">הגדרות</button>
+    <button data-view="home" data-i18n="tabHome">🏠 תפריט ראשי</button>
+    <span class="ptitle" id="pageTitle"></span>
   </nav>
   <div class="toolsr">
     <select id="langSel" aria-label="language">
-      <option value="he">עברית</option><option value="en">English</option><option value="yi">ייִדיש</option>
+      <option value="he">עברית</option><option value="en">English</option>
     </select>
     <button id="themeBtn" title="theme">🌙</button>
     <button id="installBtn" class="hidden" data-i18n="install">התקן</button>
@@ -34,8 +30,31 @@
 </header>
 
 <main>
+<!-- =================== מסך פתיחה =================== -->
+<section id="view-welcome" class="hidden">
+  <div class="welcome">
+    <div class="wmic">🎤</div>
+    <h1 data-i18n="welcomeTitle">ברוכים הבאים לאולפן הקריוקי שלך</h1>
+    <p data-i18n="welcomeSub">מעלים שיר או מדביקים קישור מיוטיוב – ומקבלים פלייבק, מילים מתוזמנות והקלטה עם ציון.</p>
+    <button class="btn pri big" id="startBtn" data-i18n="startNow">מתחילים</button>
+  </div>
+</section>
+
+<!-- =================== תפריט ראשי =================== -->
+<section id="view-home" class="hidden">
+  <h1 class="home-title" data-i18n="homeTitle">מה נעשה היום?</h1>
+  <div class="menu">
+    <a class="mcard" href="#studio"><span class="mi">🎙️</span><b data-i18n="tabStudio">אולפן</b><span data-i18n="mStudio">מעלים שיר, מפרידים, שרים ומקליטים</span></a>
+    <a class="mcard" href="#library"><span class="mi">🎵</span><b data-i18n="tabLibrary">השירים שלי</b><span data-i18n="mLibrary">כל השירים ששמרת, מועדפים ורשימות השמעה</span></a>
+    <a class="mcard" href="#party"><span class="mi">🎉</span><b data-i18n="tabParty">מצב שמחה</b><span data-i18n="mParty">תור זמרים לאירוע – כל אחד בתורו במסך מלא</span></a>
+    <a class="mcard" href="#practice"><span class="mi">🎯</span><b data-i18n="tabPractice">תרגול</b><span data-i18n="mPractice">חימום קולי, מד גובה צליל ומטרונום</span></a>
+    <a class="mcard" href="#guide"><span class="mi">📖</span><b data-i18n="tabGuide">מדריך</b><span data-i18n="mGuide">הסבר צעד אחר צעד איך משתמשים</span></a>
+    <a class="mcard" href="#settings"><span class="mi">⚙️</span><b data-i18n="tabSettings">הגדרות</b><span data-i18n="mSettings">שרת, שמירה במחשב, יצירת קשר ומנהל</span></a>
+  </div>
+</section>
+
 <!-- =================== אולפן =================== -->
-<section id="view-studio">
+<section id="view-studio" class="hidden">
   <div class="card" id="inputCard">
     <h2 data-i18n="newSong">שיר חדש</h2>
     <div class="row" style="margin-bottom:12px">
@@ -132,7 +151,7 @@
         <h2 class="grow" style="margin:0" data-i18n="lyrics">מילים</h2>
         <select id="lyrLang" style="width:auto">
           <option value="auto" data-i18n="autoLang">זיהוי שפה</option>
-          <option value="he">עברית</option><option value="yi">ייִדיש</option><option value="en">English</option>
+          <option value="he">עברית</option><option value="en">English</option>
         </select>
         <button class="btn sm" id="autoLyrBtn" data-i18n="autoLyrics">תמלל אוטומטית</button>
         <button class="btn sm" id="editLyrBtn" data-i18n="editLyrics">הקלד / ערוך</button>
@@ -153,7 +172,7 @@
         <input type="file" id="bgImg" accept="image/*" hidden>
         <select id="trLang" style="width:auto">
           <option value="" data-i18n="noTranslate">בלי תרגום</option>
-          <option value="he">→ עברית</option><option value="en">→ English</option><option value="yi">→ ייִדיש</option>
+          <option value="he">→ עברית</option><option value="en">→ English</option>
         </select>
         <label class="chk"><input type="checkbox" id="duetChk"> <span data-i18n="duet">דואט</span></label>
         <button class="btn sm" id="lrcBtn" data-i18n="downloadLrc">הורד LRC</button>

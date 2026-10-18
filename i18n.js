@@ -1,7 +1,11 @@
 /* תרגומים – עברית, אנגלית, אידיש */
 window.I18N = {
 he: {
-  appName: 'אולפן הקריוקי', company: 'כתר טכנולוגיות', install: 'התקן',
+  appName: 'אולפן הקריוקי שלי', company: 'כתר טכנולוגיות', install: 'התקן',
+  welcomeTitle: 'ברוכים הבאים לאולפן הקריוקי שלך', welcomeSub: 'מעלים שיר או מדביקים קישור מיוטיוב – ומקבלים פלייבק, מילים מתוזמנות והקלטה עם ציון.', startNow: 'מתחילים',
+  homeTitle: 'מה נעשה היום?', tabHome: '🏠 תפריט ראשי',
+  mStudio: 'מעלים שיר, מפרידים, שרים ומקליטים', mLibrary: 'כל השירים ששמרת, מועדפים ורשימות השמעה', mParty: 'תור זמרים לאירוע – כל אחד בתורו במסך מלא',
+  mPractice: 'חימום קולי, מד גובה צליל ומטרונום', mGuide: 'הסבר צעד אחר צעד איך משתמשים', mSettings: 'שרת, שמירה במחשב, יצירת קשר ומנהל',
   tabStudio: 'אולפן', tabLibrary: 'השירים שלי', tabParty: 'מצב שמחה', tabPractice: 'תרגול', tabGuide: 'מדריך', tabSettings: 'הגדרות',
   newSong: 'שיר חדש', separation: 'הפרדה:', mode2: 'שירה + פלייבק', mode4: '4 ערוצים (שירה, תופים, בס, כלים)',
   mode2short: '2 ערוצים', mode4short: '4 ערוצים',
@@ -72,7 +76,11 @@ he: {
   <h3>קיצורי מקשים</h3><p>רווח – נגן/עצור (ובזמן תזמון – סימון שורה).</p>`
 },
 en: {
-  appName: 'Karaoke Studio', company: 'Keter Technologies', install: 'Install',
+  appName: 'My Karaoke Studio', company: 'Keter Technologies', install: 'Install',
+  welcomeTitle: 'Welcome to your Karaoke Studio', welcomeSub: 'Upload a song or paste a YouTube link – get a backing track, synced lyrics and recording with a score.', startNow: 'Get started',
+  homeTitle: 'What shall we do today?', tabHome: '🏠 Main menu',
+  mStudio: 'Upload a song, separate it, sing and record', mLibrary: 'All your saved songs, favorites and playlists', mParty: 'Singer queue for events – each in turn, full screen',
+  mPractice: 'Vocal warm-up, pitch meter and metronome', mGuide: 'Step-by-step instructions', mSettings: 'Server, offline storage, contact and admin',
   tabStudio: 'Studio', tabLibrary: 'My Songs', tabParty: 'Party Mode', tabPractice: 'Practice', tabGuide: 'Guide', tabSettings: 'Settings',
   newSong: 'New song', separation: 'Separation:', mode2: 'Vocals + backing track', mode4: '4 stems (vocals, drums, bass, other)',
   mode2short: '2 stems', mode4short: '4 stems',

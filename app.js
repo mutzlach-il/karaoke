@@ -20,7 +20,7 @@ function applyLang() {
   document.documentElement.dir = LANG === 'en' ? 'ltr' : 'rtl';
   $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   $$('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
-  document.title = t('appName') + ' – ' + t('company');
+  document.title = t('appName');
   $('#langSel').value = LANG;
   renderGuide(); renderWarmups(); setPageTitle();
   if (song) { renderMixer(); renderLyrics(true); renderTakes(); updateMeta(); }
@@ -892,7 +892,7 @@ $('#expVideo').onclick = async () => {
     let cur = -1; L.forEach((l, i) => { if (l.s != null && l.s <= tm) cur = i; });
     for (let k = -1; k <= 2; k++) { const l = L[cur + k]; if (!l) continue; g.fillStyle = k === 0 ? '#facc15' : '#ffffffaa'; g.font = `${k === 0 ? 'bold 56px' : '40px'} Rubik, Arial`; g.fillText(lineText(l), 640, 360 + k * 80); }
     g.fillStyle = '#fff9'; g.font = '28px Rubik, Arial'; g.fillText(song.title, 640, 60);
-    g.font = '20px Rubik, Arial'; g.fillText(t('appName') + ' · ' + t('company'), 640, 700);
+    g.font = '20px Rubik, Arial'; g.fillText(t('appName'), 640, 700);
     const bar = m.querySelector('#vBar'); if (bar) bar.style.width = Math.min(100, (ctx.currentTime - startAt) / buf.duration * 100) + '%';
     raf = requestAnimationFrame(draw);
   };
@@ -1129,7 +1129,6 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.se
 
 /* ===================== הפעלה ===================== */
 (async function init() {
-  $('#yr').textContent = new Date().getFullYear();
   applyTheme();
   const f = store.get('font', null); if (f) { $('#fontSize').value = f; document.documentElement.style.setProperty('--lyric', f + 'px'); }
   const bg = store.get('bg', ''); if (bg && bg !== 'img') { $('#bgSel').value = bg; $('#lyrics').classList.add(bg); }

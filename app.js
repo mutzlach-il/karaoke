@@ -28,7 +28,22 @@ function applyLang() {
 }
 $('#langSel').onchange = e => { LANG = e.target.value; store.set('lang', LANG); applyLang(); };
 
-function server() { return (store.get('server', DEFAULT_SERVER) || DEFAULT_SERVER).replace(/\/+$/, ''); }
+const NTFY_TOPIC = 'keter-karaoke-mutzlach-7d3f9a';
+let AUTO_SERVER = store.get('autoServer', '');
+function server() { return (store.get('server', '') || AUTO_SERVER || DEFAULT_SERVER).replace(/\/+$/, ''); }
+async function pingServer(u, ms = 4000) { try { const r = await fetchT(u.replace(/\/+$/, '') + '/', {}, ms); return r.ok; } catch { return false; } }
+// מוצא את השרת לבד: קודם המחשב הזה, ואחר כך הכתובת הציבורית האחרונה שהשרת פרסם
+async function discoverServer() {
+  if (store.get('server', '')) return server();
+  const cands = ['http://127.0.0.1:7860'];
+  try {
+    const txt = await (await fetchT(`https://ntfy.sh/${NTFY_TOPIC}/json?poll=1&since=24h`, {}, 8000)).text();
+    const msgs = txt.trim().split('\n').filter(Boolean).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(m => m && m.event === 'message');
+    if (msgs.length) cands.push(msgs[msgs.length - 1].message.trim());
+  } catch {}
+  for (const c of cands) if (await pingServer(c, 3000)) { AUTO_SERVER = c; store.set('autoServer', c); return c; }
+  return null;
+}
 
 /* ===================== ערכת צבעים ===================== */
 function applyTheme() {
@@ -131,7 +146,8 @@ async function fetchT(url, opts = {}, ms = 20000) {
 
 // השרת החינמי נרדם – מעירים אותו ומחכים בסבלנות (רעיון 4)
 async function wakeServer() {
-  for (let i = 0; i < 12; i++) {
+  if (await pingServer(server(), 5000) || await discoverServer()) return true;
+  for (let i = 0; i < 3; i++) {
     try { const r = await fetchT(server() + '/', {}, 15000); if (r.ok) return true; } catch {}
     setJob(3, t('waking', { n: i + 1 }));
     await new Promise(r => setTimeout(r, 10000));
@@ -1057,9 +1073,9 @@ async function renderSettings() {
   $('#serverUrl').value = server();
   try { const e = await navigator.storage?.estimate?.(); if (e) $('#storageLbl').textContent = t('storageUsed', { mb: Math.round(e.usage / 1e6) }); } catch {}
 }
-$('#serverUrl').onchange = e => { store.set('server', e.target.value.trim() || DEFAULT_SERVER); };
+$('#serverUrl').onchange = e => { store.set('server', e.target.value.trim()); };
 $('#serverTest').onclick = async () => {
-  store.set('server', $('#serverUrl').value.trim() || DEFAULT_SERVER);
+  store.set('server', $('#serverUrl').value.trim()); if (!store.get('server', '')) await discoverServer();
   const st = $('#serverStatus'); st.textContent = t('checking'); st.className = 'status';
   try { const r = await fetchT(server() + '/', {}, 60000); const d = await r.json(); st.textContent = '✅ ' + t('serverOk', { q: d.queue ?? 0 }); st.className = 'status ok'; }
   catch { st.textContent = '❌ ' + t('noServer'); st.className = 'status err'; }
@@ -1110,7 +1126,7 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.se
   applyTheme();
   const f = store.get('font', null); if (f) { $('#fontSize').value = f; document.documentElement.style.setProperty('--lyric', f + 'px'); }
   const bg = store.get('bg', ''); if (bg && bg !== 'img') { $('#bgSel').value = bg; $('#lyrics').classList.add(bg); }
-  applyLang(); renderWarmups();
+  applyLang(); renderWarmups(); discoverServer();
   show((location.hash || '#studio').slice(1) || 'studio');
   const qs = new URLSearchParams(location.search);
   if (qs.get('server')) { store.set('server', qs.get('server')); history.replaceState(null, '', location.pathname + location.hash); }

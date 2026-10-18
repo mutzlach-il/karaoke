@@ -1,0 +1,125 @@
+:root{
+  --bg:#0f0e17; --bg2:#1a1926; --card:#22202f; --line:#34314a; --text:#f2f0ff; --muted:#a9a5c4;
+  --brand:#8b5cf6; --brand2:#ec4899; --ok:#22c55e; --warn:#f59e0b; --err:#ef4444;
+  --a:#38bdf8; --b:#f472b6; --radius:14px; --lyric:34px;
+}
+:root[data-theme="light"]{
+  --bg:#f6f5fb; --bg2:#ffffff; --card:#ffffff; --line:#e3e0f0; --text:#1d1a2e; --muted:#6b6785;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:"Rubik","Segoe UI",Arial,sans-serif;font-size:16px}
+body{min-height:100vh}
+a{color:var(--brand)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+/* ---------- כותרת ---------- */
+header.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:10px 16px;background:color-mix(in srgb,var(--bg2) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;text-decoration:none;color:var(--text)}
+.logo span.k{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-inline-start:auto}
+nav.tabs button{background:none;border:0;padding:8px 12px;border-radius:10px;color:var(--muted)}
+nav.tabs button.on{background:var(--card);color:var(--text);box-shadow:0 0 0 1px var(--line)}
+.toolsr{display:flex;gap:6px;align-items:center}
+.toolsr select,.toolsr button{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+
+main{max-width:1100px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px}
+h1,h2,h3{margin:.2em 0 .5em}
+.muted{color:var(--muted);font-size:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grow{flex:1}
+.btn{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 14px}
+.btn:hover{border-color:var(--brand)}
+.btn.pri{background:linear-gradient(90deg,var(--brand),var(--brand2));border:0;color:#fff;font-weight:600}
+.btn.sm{padding:5px 9px;font-size:14px}
+.btn.on{border-color:var(--brand);box-shadow:0 0 0 2px color-mix(in srgb,var(--brand) 40%,transparent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+input[type=text],input[type=url],input[type=password],input[type=email],input[type=number],select,textarea{
+  background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;width:100%}
+textarea{min-height:120px;resize:vertical}
+label.chk{display:inline-flex;gap:6px;align-items:center;font-size:14px}
+
+/* ---------- העלאה ---------- */
+.drop{border:2px dashed var(--line);border-radius:var(--radius);padding:28px;text-align:center;transition:.2s}
+.drop.over,body.dragging .drop{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 10%,transparent)}
+.or{display:flex;align-items:center;gap:10px;color:var(--muted);margin:14px 0}
+.or:before,.or:after{content:"";flex:1;height:1px;background:var(--line)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{background:none;border:0;padding:7px 12px}
+.seg button.on{background:var(--brand);color:#fff}
+.progress{height:12px;background:var(--bg2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .4s}
+.status{margin-top:8px;font-size:15px}
+.status.err{color:var(--err)} .status.ok{color:var(--ok)}
+
+/* ---------- נגן ---------- */
+.wave{width:100%;height:90px;display:block;background:var(--bg2);border-radius:10px;cursor:pointer}
+.transport{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.time{font-variant-numeric:tabular-nums;color:var(--muted);min-width:110px}
+.mixer{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:10px}
+.ch{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px}
+.ch .row{justify-content:space-between}
+input[type=range]{width:100%;accent-color:var(--brand)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.kv{display:flex;justify-content:space-between;gap:8px;font-size:14px}
+.pill{display:inline-block;padding:2px 8px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);font-size:13px}
+
+/* ---------- מילים ---------- */
+.lyrics{background:#000;color:#fff;border-radius:var(--radius);padding:24px 16px;min-height:220px;max-height:380px;
+  overflow:hidden;text-align:center;position:relative;background-size:cover;background-position:center}
+.lyrics .ln{font-size:calc(var(--lyric)*.62);opacity:.45;margin:8px 0;transition:.25s;line-height:1.35}
+.lyrics .ln.cur{font-size:var(--lyric);opacity:1;font-weight:700}
+.lyrics .ln.A{color:var(--a)} .lyrics .ln.B{color:var(--b)}
+.lyrics .w{transition:color .1s}
+.lyrics .w.sung{color:#facc15}
+.lyrics .tr{display:block;font-size:.55em;opacity:.8;font-weight:400}
+.lyrics .count{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;font-weight:800;background:#000a}
+.lyrics:fullscreen{max-height:none;display:flex;flex-direction:column;justify-content:center;padding:5vh 5vw}
+.lyrics:fullscreen .ln.cur{font-size:calc(var(--lyric)*1.8)}
+.lyrics:fullscreen .ln{font-size:calc(var(--lyric)*1.1)}
+.bg-1{background:linear-gradient(135deg,#1e1b4b,#831843)!important}
+.bg-2{background:linear-gradient(135deg,#052e16,#0c4a6e)!important}
+.bg-3{background:radial-gradient(circle at 30% 20%,#7c2d12,#000)!important}
+.bg-4{background:linear-gradient(270deg,#4c1d95,#be185d,#1d4ed8)!important;background-size:600% 600%!important;animation:bgmove 14s ease infinite}
+@keyframes bgmove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* ---------- ספריה ---------- */
+.list{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.item .t{font-weight:600}
+.star{background:none;border:0;font-size:20px;color:var(--muted)}
+.star.on{color:#facc15}
+.tagx{font-size:12px;padding:1px 7px;border-radius:99px;background:color-mix(in srgb,var(--brand) 25%,transparent)}
+
+/* ---------- מד גובה ---------- */
+.pitchbar{position:relative;height:70px;background:var(--bg2);border-radius:10px;border:1px solid var(--line);overflow:hidden}
+.pitchbar canvas{width:100%;height:100%;display:block}
+.score{font-size:42px;font-weight:800;background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- חלונות ---------- */
+.modal{position:fixed;inset:0;background:#0009;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal .box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
+.toast{position:fixed;bottom:18px;inset-inline-start:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--line);
+  padding:10px 16px;border-radius:12px;z-index:60;box-shadow:0 8px 30px #0006}
+[dir=rtl] .toast{transform:translateX(50%)}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 16px 40px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{border-bottom:1px solid var(--line);padding:6px;text-align:start}
+.bars{display:flex;align-items:flex-end;gap:3px;height:80px}
+.bars div{flex:1;background:var(--brand);border-radius:3px 3px 0 0;min-height:2px}
+
+@media (max-width:640px){
+  main{padding:10px}
+  .card{padding:14px}
+  nav.tabs{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap}
+  nav.tabs button{white-space:nowrap}
+  :root{--lyric:26px}
+}
+@media print{
+  header,footer,.noprint{display:none!important}
+  body{background:#fff;color:#000}
+  .printable{display:block!important}
+}

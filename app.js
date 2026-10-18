@@ -1113,6 +1113,7 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.se
   applyLang(); renderWarmups();
   show((location.hash || '#studio').slice(1) || 'studio');
   const qs = new URLSearchParams(location.search);
+  if (qs.get('server')) { store.set('server', qs.get('server')); history.replaceState(null, '', location.pathname + location.hash); }
   if (qs.get('job')) {
     const srv = qs.get('srv') || server();
     try { setJob(50, t('loadingShared')); const r = await fetchT(srv + '/job/' + qs.get('job'), {}, 60000);

@@ -98,7 +98,7 @@ function renderAccount() {
     <div class="row" style="margin-top:12px"><button class="btn pri" id="aGo">${L('כניסה', 'Sign in')}</button><button class="btn link" id="aForgot">${L('שכחתי סיסמה', 'Forgot password')}</button></div>`;
   if (ACC.step === 'register') html = `${tabs}${field('aName', L('שם', 'Name'))}${field('aEmail', L('מייל', 'Email'), 'email', ACC.email)}${field('aPw', L('סיסמה (לפחות 6 תווים)', 'Password (6+ characters)'), 'password')}
     <div class="row" style="margin-top:12px"><button class="btn pri" id="aGo">${L('הרשמה', 'Create account')}</button></div>
-    <p class="muted">${L('נשלח אליך קוד אימות במייל.', 'We will email you a verification code.')}</p>`;
+    <p class="muted">${L('נשלח אליך קוד אימות במייל.', 'We will email you a verification code.')} ${t('agreePriv')}<a href="#privacy">${t('privacyTitle')}</a>.</p>`;
   if (ACC.step === 'verify') html = `<h3>${L('אימות מייל', 'Verify email')}</h3><p>${L('שלחנו קוד בן 6 ספרות אל', 'We sent a 6-digit code to')} <b dir="ltr">${esc(ACC.email)}</b></p>
     ${field('aCode', L('הקוד מהמייל', 'Code from the email'))}<div class="row" style="margin-top:12px"><button class="btn pri" id="aGo">${L('אישור', 'Confirm')}</button><button class="btn link" id="aBack">${L('חזרה', 'Back')}</button></div>`;
   if (ACC.step === 'forgot') html = `<h3>${L('איפוס סיסמה', 'Reset password')}</h3>${field('aEmail', L('המייל שלך', 'Your email'), 'email', ACC.email)}

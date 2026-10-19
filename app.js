@@ -178,9 +178,9 @@ async function submit(kind, payload) {
     if (kind === 'file') {
       const fd = new FormData(); fd.append('file', payload); fd.append('mode', MODE);
       setJob(4, t('uploading'));
-      r = await fetchT(server() + '/upload', { method: 'POST', body: fd }, 300000);
+      r = await fetchT(server() + '/upload', { method: 'POST', body: fd, headers: window.authHeaders ? authHeaders() : {} }, 300000);
     } else {
-      r = await fetchT(server() + '/youtube', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      r = await fetchT(server() + '/youtube', { method: 'POST', headers: { 'Content-Type': 'application/json', ...(window.authHeaders ? authHeaders() : {}) },
         body: JSON.stringify({ url: payload, mode: MODE }) }, 60000);
     }
     if (!r.ok) { setJob(0, '❌ ' + await apiError(r), 'err'); return; }
@@ -189,7 +189,7 @@ async function submit(kind, payload) {
   } catch (e) {
     setJob(0, '❌ ' + t('netErr'), 'err');
   } finally {
-    busy = false; $('#ytBtn').disabled = $('#pickBtn').disabled = false;
+    busy = false; $('#ytBtn').disabled = $('#pickBtn').disabled = false; window.refreshLimits && refreshLimits();
   }
 }
 

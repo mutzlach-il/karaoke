@@ -55,6 +55,7 @@
   <h1 class="home-title" data-i18n="homeTitle">מה נעשה היום?</h1>
   <div class="menu">
     <a class="mcard" href="#studio"><span class="mi">🎙️</span><b data-i18n="tabStudio">אולפן</b><span data-i18n="mStudio">מעלים שיר, מפרידים, שרים ומקליטים</span></a>
+    <a class="mcard hot" href="#feed"><span class="mi">🌟</span><b data-i18n="commTitle">קהילה</b><span data-i18n="mComm">קליפים וסטורי של זמרים, עוקבים ולייקים</span></a>
     <a class="mcard" href="#library"><span class="mi">🎵</span><b data-i18n="tabLibrary">השירים שלי</b><span data-i18n="mLibrary">כל השירים ששמרת, מועדפים ורשימות השמעה</span></a>
     <a class="mcard" href="#party"><span class="mi">🎉</span><b data-i18n="tabParty">מצב שמחה</b><span data-i18n="mParty">תור זמרים לאירוע – כל אחד בתורו במסך מלא</span></a>
     <a class="mcard" href="#guide"><span class="mi">📖</span><b data-i18n="tabGuide">מדריך</b><span data-i18n="mGuide">הסבר צעד אחר צעד איך משתמשים</span></a>
@@ -87,6 +88,7 @@
       <input type="url" id="ytInput" class="grow" placeholder="https://www.youtube.com/watch?v=..." style="flex:1;min-width:220px">
       <button class="btn pri" id="ytBtn" data-i18n="fromYoutube">הבא מיוטיוב</button>
     </div>
+    <div id="limitBox" class="limitbox"></div>
     <div id="jobBox" class="hidden" style="margin-top:16px">
       <div class="progress"><div id="jobBar"></div></div>
       <div class="status" id="jobStatus"></div>
@@ -346,6 +348,13 @@
 <section id="view-remote" class="hidden"><div id="remoteBox" class="remote"></div></section>
 <!-- =================== ביצוע ששותף =================== -->
 <section id="view-perf" class="hidden"><div id="perfBox"></div></section>
+<!-- =================== קהילה =================== -->
+<section id="view-feed" class="hidden"><div id="feedBox"></div></section>
+<section id="view-profile" class="hidden"><div id="profileBox"></div></section>
+<section id="view-create" class="hidden"><div id="createBox"></div></section>
+<section id="view-notifs" class="hidden"><div id="notifBox" class="narrow"></div></section>
+<section id="view-clip" class="hidden"><div id="clipBox"></div></section>
+<section id="view-event" class="hidden"><div id="eventBox"></div></section>
 <!-- =================== מדיניות פרטיות =================== -->
 <section id="view-privacy" class="hidden"><div class="card narrow guide" id="privacyBox"></div></section>
 </main>
@@ -362,5 +371,6 @@
 <script src="fx.js"></script>
 <script src="account.js"></script>
 <script src="party.js"></script>
+<script src="social.js"></script>
 </body>
 </html>

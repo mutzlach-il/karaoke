@@ -118,7 +118,7 @@ async function renderParty(soft) {
       <div class="muted" style="word-break:break-all" dir="ltr">${esc(roomLink())}</div>
       <div class="row" style="margin-top:6px"><button class="btn sm" id="pCopy">${L('העתק קישור', 'Copy link')}</button><button class="btn sm" id="pClose">${L('סגור חדר', 'Close room')}</button>
       <span class="pill">📱 ${Object.keys(ROOMST?.people || {}).length} ${L('מחוברים', 'connected')}</span></div></div>`
-      : `<button class="btn" id="pRoom">📱 ${L('חיבור טלפונים (שלט, הזמנת שירים והצבעה)', 'Connect phones (remote, song requests & voting)')}</button>`}</div>
+      : `<button class="btn" id="pRoom">📱 ${L('חיבור טלפונים – יצירת קוד QR', 'Connect phones – create QR code')}</button><span class="muted">${L('לחיצה כאן יוצרת קוד QR שהאורחים סורקים מהטלפון (צריך שהשרת יהיה דולק).', 'Creates a QR code guests scan with their phones (server must be on).')}</span>`}</div>
   </div>
 
   <div class="grid2">
@@ -607,7 +607,20 @@ function bindStudioExtras() {
 }
 
 /* ===================== ניתוב לעמודים החדשים והפעלה ===================== */
-Object.assign(PAGE_TITLES, { home: 'tabHome', welcome: 'welcomeTitle', account: 'accTitle', contact: 'contact', admin: 'admin', remote: 'tabParty', perf: 'perfTitle' });
+Object.assign(PAGE_TITLES, { home: 'tabHome', welcome: 'welcomeTitle', account: 'accTitle', contact: 'contact', admin: 'admin', remote: 'tabParty', perf: 'perfTitle', privacy: 'privacyTitle' });
+/* כפתור חזרה לעמוד הקודם */
+const NAVSTACK = [];
+let navBack = false, lastView = curView();
+window.addEventListener('hashchange', () => { const v = curView(); if (!navBack && v !== lastView) NAVSTACK.push(lastView); navBack = false; lastView = v; });
+function goBack() {
+  let prev = NAVSTACK.pop(); while (prev === curView()) prev = NAVSTACK.pop();
+  navBack = true; location.hash = !prev || prev === 'welcome' ? 'home' : prev;
+}
+{ const b = $('#backBtn'); if (b) b.onclick = e => { e.stopPropagation(); goBack(); }; }
+/* תוכן העניינים במדריך – גלילה בלי לשנות עמוד */
+document.addEventListener('click', e => { const a = e.target.closest('.gtoc a, .guide a[href^="#g-"]'); if (!a) return; e.preventDefault();
+  document.getElementById(a.getAttribute('href').slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+function renderPrivacy() { const b = $('#privacyBox'); if (b) b.innerHTML = t('privacyHtml'); }
 Object.assign(I18N.he, { accTitle: 'החשבון שלי', perfTitle: 'ביצוע ששותף' });
 Object.assign(I18N.en, { accTitle: 'My account', perfTitle: 'Shared performance' });
 function onExtraView() {
@@ -615,10 +628,11 @@ function onExtraView() {
   if (v === 'account') renderAccount();
   if (v === 'contact') renderContact();
   if (v === 'admin') renderAdmin();
+  if (v === 'privacy') renderPrivacy();
   if (v !== 'welcome') track('view', v);
 }
 window.addEventListener('hashchange', onExtraView);
-{ const orig = applyLang; applyLang = function () { orig(); renderUserChip(); const v = curView(); if (v === 'account') renderAccount(); if (v === 'contact') renderContact(); if (v === 'admin') renderAdmin(); if (v === 'remote') renderRemote(); }; }
+{ const orig = applyLang; applyLang = function () { orig(); renderUserChip(); const v = curView(); if (v === 'account') renderAccount(); if (v === 'contact') renderContact(); if (v === 'admin') renderAdmin(); if (v === 'remote') renderRemote(); if (v === 'privacy') renderPrivacy(); }; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && STAGE.open && !document.fullscreenElement && !$('.modal')) closeStage(); });
 
 (function extraInit() {

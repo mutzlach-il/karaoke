@@ -286,7 +286,7 @@ Object.assign(window.I18N.he, {
 <li><b>תמונת פרופיל ופרטי פרופיל</b> שבחרת להוסיף.</li></ul>
 <h3>אחריות על תוכן</h3><p>כל משתמש אחראי על מה שהוא מעלה, כולל זכויות על השירים והסכמה של מי שמופיע בקליפ. אסור להעלות תוכן פוגע, לא צנוע או שמפר זכויות. תוכן שדווח ייבדק ויכול להיות מוסתר או נמחק, ומשתמש שמפר את הכללים יכול להיחסם.</p>
 <h3>מה לא עושים</h3><ul><li>לא מוכרים ולא מעבירים מידע לאף אחד.</li><li>לא משתמשים בפרסומות או במעקב של חברות אחרות.</li><li>המייל שלך משמש רק לקודי אימות, איפוס סיסמה ותשובות לפניות שלך.</li></ul>
-<h3>הזכויות שלך</h3><p>אפשר לבקש לראות, לתקן או למחוק את המידע שלך (כולל מחיקת החשבון) – דרך עמוד "צור קשר" או במייל bnyytmrkwt@gmail.com.</p>`, agreePriv: 'בהרשמה אני מסכים/ה ל',
+<h3>הזכויות שלך</h3><p>אפשר לבקש לראות, לתקן או למחוק את המידע שלך (כולל מחיקת החשבון) – דרך עמוד "צור קשר" או במייל myelin41375@gmail.com.</p>`, agreePriv: 'בהרשמה אני מסכים/ה ל',
   accTitle: 'החשבון שלי', perfTitle: 'ביצוע ששותף', mAccount: 'הרשמה וכניסה – השירים שלך בכל מחשב', mContact: 'שאלה, רעיון או בעיה? כתבו לנו',
   sharePerf: '🔗 שתף את הביצוע שלי', guideMode: '🎧 מצב מדריך', crowdLbl: 'קהל:',
   aniNone: 'בלי רקע מונפש', aniSpace: '🌌 חלל', aniSea: '🌊 ים', aniFire: '🎆 זיקוקים', aniDisco: '🪩 דיסקו', lights: '💡 אורות מסיבה',
@@ -308,7 +308,7 @@ Object.assign(window.I18N.en, {
 <li><b>Community clips & stories:</b> what you post (video or voice, caption, comments, likes) is stored on the server and shown per your choice – everyone or followers only. Stories disappear after 24 hours. You can delete your clips anytime.</li></ul>
 <h3>Content responsibility</h3><p>Each user is responsible for what they upload, including song rights and consent of anyone appearing. Offensive or infringing content may be hidden or deleted, and violating users may be blocked.</p>
 <h3>What we don't do</h3><ul><li>We don't sell or share your data.</li><li>No ads or third-party tracking.</li><li>Your email is used only for codes, password reset and replies.</li></ul>
-<h3>Your rights</h3><p>You can ask to see, correct or delete your data (including your account) via the Contact page or bnyytmrkwt@gmail.com.</p>`, agreePriv: 'By signing up I agree to the ',
+<h3>Your rights</h3><p>You can ask to see, correct or delete your data (including your account) via the Contact page or myelin41375@gmail.com.</p>`, agreePriv: 'By signing up I agree to the ',
   accTitle: 'My account', perfTitle: 'Shared performance', mAccount: 'Sign up and sign in – your songs on every computer', mContact: 'A question, idea or problem? Write to us',
   sharePerf: '🔗 Share my performance', guideMode: '🎧 Guide mode', crowdLbl: 'Crowd:',
   aniNone: 'No animated background', aniSpace: '🌌 Space', aniSea: '🌊 Sea', aniFire: '🎆 Fireworks', aniDisco: '🪩 Disco', lights: '💡 Party lights',

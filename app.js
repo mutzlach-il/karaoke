@@ -114,7 +114,7 @@ const DB = {
 };
 
 /* ===================== ניווט ===================== */
-const PAGE_TITLES = { studio: 'tabStudio', library: 'tabLibrary', party: 'tabParty', practice: 'tabPractice', guide: 'tabGuide', settings: 'tabSettings' };
+const PAGE_TITLES = { studio: 'tabStudio', library: 'tabLibrary', party: 'tabParty', guide: 'tabGuide', settings: 'tabSettings' };
 function curView() { return (location.hash || '#welcome').slice(1).split('?')[0] || 'welcome'; }
 function setPageTitle() { const k = PAGE_TITLES[curView()]; if ($('#pageTitle')) $('#pageTitle').textContent = k ? t(k) : ''; }
 function show(view) {
@@ -525,7 +525,7 @@ window.addEventListener('resize', drawWave);
 
 /* ----- מטרונום (55) ----- */
 const METRO = { on: false, id: 0 };
-function currentBpm() { return Math.round((song?.bpm || +$('#metroBpm').value || 90) * (+$('#tempo').value / 100)); }
+function currentBpm() { return Math.round((song?.bpm || 90) * (+$('#tempo').value / 100)); }
 function click(accent) {
   const ctx = audioCtx(); const o = ctx.createOscillator(), g = ctx.createGain();
   o.frequency.value = accent ? 1500 : 1000; g.gain.setValueAtTime(.25, ctx.currentTime); g.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + .05);
@@ -534,7 +534,6 @@ function click(accent) {
 function startMetro(bpm) { stopMetro(); METRO.on = true; let n = 0; click(true); METRO.id = setInterval(() => click(++n % 4 === 0), 60000 / bpm); }
 function stopMetro() { METRO.on = false; clearInterval(METRO.id); }
 $('#metroChk').onchange = e => { if (e.target.checked && P.playing) startMetro(currentBpm()); else stopMetro(); };
-$('#metroToggle').onclick = async () => { audioCtx(); await P.ctx.resume(); METRO.on ? stopMetro() : startMetro(+$('#metroBpm').value || 90); };
 
 /* ===================== מילים (15–19, 48, 71–75) ===================== */
 let lastLine = -2;
@@ -1034,35 +1033,7 @@ const PL = { active: false, list: [], i: 0,
 /* ===================== ערב קריוקי – ראו party.js ===================== */
 async function renderParty() {}
 
-/* ===================== חימום קולי (53) ===================== */
-const WARMUPS = [
-  { k: 'wuScale', notes: [60, 62, 64, 65, 67, 65, 64, 62, 60] },
-  { k: 'wuArp', notes: [60, 64, 67, 72, 67, 64, 60] },
-  { k: 'wuFive', notes: [60, 62, 64, 62, 60, 62, 64, 62, 60] },
-  { k: 'wuHigh', notes: [65, 67, 69, 70, 72, 70, 69, 67, 65] },
-  { k: 'wuLow', notes: [55, 57, 59, 60, 62, 60, 59, 57, 55] }
-];
-function renderWarmups() {
-  $('#warmupBtns').innerHTML = WARMUPS.map((w, i) => `<button class="btn" data-wu="${i}">${t(w.k)}</button>`).join('');
-  $$('[data-wu]').forEach(b => b.onclick = () => playNotes(WARMUPS[b.dataset.wu].notes));
-}
-async function playNotes(notes) {
-  const ctx = audioCtx(); await ctx.resume(); let tt = ctx.currentTime + .1;
-  for (const n of notes) { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'triangle'; o.frequency.value = 440 * Math.pow(2, (n - 69) / 12);
-    g.gain.setValueAtTime(0, tt); g.gain.linearRampToValueAtTime(.2, tt + .05); g.gain.linearRampToValueAtTime(0, tt + .5);
-    o.connect(g); g.connect(ctx.destination); o.start(tt); o.stop(tt + .55); tt += .55; }
-}
-let warm = null;
-$('#warmMic').onclick = async () => {
-  if (warm) { warm.s.getTracks().forEach(x => x.stop()); cancelAnimationFrame(warm.raf); warm = null; $('#warmMic').textContent = t('micOn'); return; }
-  try { const s = await navigator.mediaDevices.getUserMedia({ audio: true }); const ctx = audioCtx(); await ctx.resume();
-    const an = ctx.createAnalyser(); an.fftSize = 2048; ctx.createMediaStreamSource(s).connect(an); const buf = new Float32Array(2048); const hist = [];
-    warm = { s }; $('#warmMic').textContent = t('micOff');
-    const tick = () => { const f = detectPitch(an, buf); hist.push({ me: f ? midi(f) : null }); if (hist.length > 200) hist.shift();
-      drawPitch($('#warmCanvas'), hist); if (f) $('#warmNote').textContent = noteName(f); warm && (warm.raf = requestAnimationFrame(tick)); };
-    tick();
-  } catch { toast(t('micDenied')); }
-};
+function renderWarmups() {}   // עמוד התרגול הוסר
 
 /* ===================== הגדרות ומנהל (34–38) ===================== */
 async function renderSettings() {

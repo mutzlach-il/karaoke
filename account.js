@@ -239,10 +239,12 @@ async function renderAdmin() {
         <div class="tblwrap"><table class="admtbl"><tr><th>${L('שם', 'Name')}</th><th>${L('מייל', 'Email')}</th><th>${L('נרשם', 'Joined')}</th><th>${L('נראה לאחרונה', 'Last seen')}</th><th>${L('שירים', 'Songs')}</th><th></th></tr>
         ${us.map(u => `<tr data-q="${esc((u.name + ' ' + u.email).toLowerCase())}" class="${u.blocked ? 'blocked' : ''}"><td>${esc(u.name || '—')}</td><td dir="ltr">${esc(u.email)} ${u.verified ? '✅' : '⏳'}</td>
           <td>${when(u.created)}</td><td>${when(u.last_seen)}</td><td>${u.songs_count || 0}</td>
-          <td><button class="btn sm" data-blk="${u.id}" data-b="${u.blocked ? 0 : 1}">${u.blocked ? L('שחרר', 'Unblock') : L('חסום', 'Block')}</button></td></tr>`).join('') || `<tr><td>${t('none')}</td></tr>`}</table></div>
-        <p class="muted">✅ ${L('מאומת', 'verified')} · ⏳ ${L('עוד לא אימת את המייל', 'not verified yet')} · ${L('סה״כ', 'Total')} ${us.length}</p>`;
+          <td>${u.is_admin ? `<span class="pill">👑 ${L('מנהל', 'Admin')}</span>` : `<button class="btn sm ${u.unlimited ? 'pri' : ''}" data-unl="${u.id}" data-on="${u.unlimited ? 0 : 1}" title="${L('שימוש בלי הגבלה באתר', 'Unlimited use of the site')}">${u.unlimited ? '⭐ ' + L('ללא הגבלה ✓', 'Unlimited ✓') : '⭐ ' + L('תן ללא הגבלה', 'Make unlimited')}</button>
+            <button class="btn sm" data-blk="${u.id}" data-b="${u.blocked ? 0 : 1}">${u.blocked ? L('שחרר', 'Unblock') : L('חסום', 'Block')}</button>`}</td></tr>`).join('') || `<tr><td>${t('none')}</td></tr>`}</table></div>
+        <p class="muted">✅ ${L('מאומת', 'verified')} · ⏳ ${L('עוד לא אימת את המייל', 'not verified yet')} · ⭐ ${L('ללא הגבלה = יכול להשתמש באתר כמה שהוא רוצה', 'Unlimited = no usage limits')} · ${L('סה״כ', 'Total')} ${us.length}</p>`;
       $('#admUserQ').oninput = e => { const q = e.target.value.toLowerCase(); $$('.admtbl tr[data-q]').forEach(r => r.classList.toggle('hidden', !r.dataset.q.includes(q))); };
       $$('[data-blk]').forEach(b => b.onclick = async () => { await api(`/admin/users/${b.dataset.blk}/block`, { method: 'POST', admin: k, body: { blocked: b.dataset.b === '1' } }); renderAdmin(); });
+      $$('[data-unl]').forEach(b => b.onclick = async () => { await api(`/admin/users/${b.dataset.unl}/unlimited`, { method: 'POST', admin: k, body: { on: b.dataset.on === '1' } }); renderAdmin(); });
     } else if (ADM.tab === 'messages') {
       const ms = await api('/admin/messages', { admin: k });
       body.innerHTML = ms.length ? ms.map(m => `<div class="msg ${m.handled ? 'done' : ''}"><div class="row"><b class="grow">${esc(m.name || L('ללא שם', 'No name'))} ${m.email ? `· <a dir="ltr" href="mailto:${esc(m.email)}?subject=${encodeURIComponent('Re: ' + t('appName'))}">${esc(m.email)}</a>` : ''}</b>
@@ -287,7 +289,7 @@ async function renderAdmin() {
       body.innerHTML = `<div class="guide">${L(`<h3>📖 הוראות למנהל (רק אתה רואה את זה)</h3>
 <ul><li>נכנסים עם סיסמת המנהל (בקובץ admin-key.txt בתיקיית השרת).</li>
 <li><b>📊 כניסות</b> – מבקרים היום, השבוע והחודש, גרף של 30 יום, מדינות, מכשירים, מאיפה הגיעו, עמודים, שפה ופעולות.</li>
-<li><b>👥 משתמשים</b> – כל הנרשמים, מתי נכנסו לאחרונה, כמה שירים, חיפוש וחסימה.</li>
+<li><b>👥 משתמשים</b> – כל הנרשמים, מתי נכנסו לאחרונה, כמה שירים, חיפוש וחסימה. כפתור <b>"⭐ תן ללא הגבלה"</b> – המשתמש יכול להשתמש באתר כמה שהוא רוצה (כמוך). לחיצה נוספת מבטלת.</li>
 <li><b>✉ הודעות</b> – פניות מ"צור קשר", עם סימון "טופל".</li>
 <li><b>🚩 דיווחים</b> – קליפים ותגובות שמשתמשים דיווחו עליהם. לכל דיווח: "בסדר, להשאיר", "להסתיר" או "למחוק".</li>
 <li><b>⚙️ הגבלות ואתגר</b> – כמה שירים, קליפים וערבי קריוקי מותר לכל אחד, והאתגר השבועי (תגית + תיאור). השינוי נכנס לתוקף מיד. אתה עצמך בלי הגבלה.</li>

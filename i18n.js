@@ -66,15 +66,119 @@ he: {
   obTitle: 'ברוך הבא לאולפן הקריוקי 🎤', ob1: 'גרור קובץ שיר, או הדבק קישור מיוטיוב – והשרת יפריד בין השירה למוזיקה.',
   ob2: 'שנה סולם ומהירות, הפעל מילים מתוזמנות, ושיר במסך מלא.', ob3: 'הקלט את עצמך, קבל ציון, הוסף אפקטים והורד MP3 או סרטון.',
   skip: 'דלג', next: 'הבא', letsGo: 'יאללה!',
-  guideHtml: `<h2>מדריך שימוש</h2>
-  <h3>1. הבאת שיר</h3><p>באולפן: גרור קובץ שיר לכל מקום בעמוד, לחץ "בחר קובץ", או הדבק קישור מיוטיוב ולחץ "הבא מיוטיוב". בחר "שירה + פלייבק" או "4 ערוצים".</p>
-  <h3>2. המתנה</h3><p>בפעם הראשונה ביום השרת מתעורר (עד דקה). ההפרדה לוקחת בערך 1–4 דקות לשיר. פס ההתקדמות מראה איפה זה עומד.</p>
-  <h3>3. נגינה</h3><p>"קריוקי" – בלי שירה. "מקורי" – עם שירה. במיקסר אפשר להשאיר קצת שירה כעזרה, או להשתיק כלי מסוים. סולם – מתאים את המוזיקה לקול שלך. מהירות – להאטה בזמן לימוד.</p>
-  <h3>4. מילים</h3><p>"תמלל אוטומטית" מוציא מילים מתוזמנות מילה-מילה. אפשר גם להקליד ידנית ואז "תזמון בהקשה": מנגנים ולוחצים רווח בתחילת כל שורה. לדואט כותבים A: או B: בתחילת שורה.</p>
-  <h3>5. הקלטה</h3><p>לחץ "התחל להקליט" (עדיף עם אוזניות). הקו הוורוד הוא הקול שלך, האפור – הזמר המקורי. בסוף תקבל ציון. סמן ניסיונות לייצוא והורד MP3, WAV או סרטון.</p>
-  <h3>6. התיקייה שלי</h3><p>"שמור בתיקייה" שומר את השיר במחשב לתמיד – גם בלי אינטרנט. אפשר תגיות, מועדפים, רשימות השמעה ופרופילים לכל בן משפחה.</p>
-  <h3>7. ערב קריוקי</h3><p>מוסיפים זמרים ושירים לתור, ובכל פעם לוחצים "הזמר הבא".</p>
-  <h3>קיצורי מקשים</h3><p>רווח – נגן/עצור (ובזמן תזמון – סימון שורה).</p>`
+  guideHtml: `<h2>📖 מדריך שימוש מלא</h2>
+<p class="muted">כל מה שיש באתר, עמוד אחרי עמוד. לחצו על נושא כדי לקפוץ אליו.</p>
+<nav class="gtoc"><a href="#g-start">🚀 לפני הכל</a><a href="#g-home">🏠 תפריט ראשי</a><a href="#g-studio">🎙️ אולפן</a><a href="#g-lyrics">📝 מילים</a><a href="#g-rec">⏺ הקלטה ואפקטים</a><a href="#g-export">⬇ ייצוא ושיתוף</a><a href="#g-lib">🎵 השירים שלי</a><a href="#g-party">🎉 ערב קריוקי</a><a href="#g-phone">📱 הטלפון כשלט</a><a href="#g-practice">🎯 תרגול</a><a href="#g-acc">👤 חשבון</a><a href="#g-contact">✉️ צור קשר</a><a href="#g-settings">⚙️ הגדרות</a><a href="#g-admin">🛠 לוח מנהל</a><a href="#g-keys">⌨️ קיצורים</a></nav>
+
+<h3 id="g-start">🚀 לפני הכל – השרת</h3>
+<p>הפרדת שירים, חשבונות, ערב קריוקי עם טלפונים, שיתוף בקישור ולוח המנהל עובדים דרך השרת שרץ על המחשב שלך. כשהשרת דולק – האתר מוצא אותו לבד. בלי השרת אפשר עדיין לנגן שירים ששמרת במחשב, לתרגל ולהשתמש בחלק מהכלים.</p>
+
+<h3 id="g-home">🏠 התפריט הראשי והניווט</h3>
+<ul><li>מסך הפתיחה – לוחצים <b>"מתחילים"</b> ומגיעים לתפריט עם כל העמודים.</li>
+<li>בראש כל עמוד יש כפתור <b>"→ חזרה"</b> לעמוד הקודם, וכפתור <b>"🏠 תפריט ראשי"</b>.</li>
+<li>למעלה: בחירת שפה (עברית / English), מצב כהה/בהיר (☀️/🌙), וכפתור <b>👤</b> לכניסה לחשבון.</li></ul>
+
+<h3 id="g-studio">🎙️ אולפן – הבאת שיר ונגינה</h3>
+<ul><li><b>הבאת שיר:</b> גוררים קובץ (MP3, WAV, M4A וכו') לכל מקום בעמוד, או "בחר קובץ", או מדביקים קישור מיוטיוב ולוחצים "הבא מיוטיוב".</li>
+<li><b>סוג הפרדה:</b> "שירה + פלייבק" (רגיל), או "4 ערוצים" – שירה, תופים, בס ושאר הכלים בנפרד.</li>
+<li><b>המתנה:</b> ההפרדה לוקחת בערך 1–4 דקות. פס ההתקדמות מראה איפה זה עומד.</li>
+<li><b>נגינה:</b> ▶ נגן, ⏹ עצור, ⏪/⏩ קפיצה של 5 שניות. על גל הקול אפשר ללחוץ כדי לקפוץ למקום.</li>
+<li><b>קריוקי / מקורי:</b> בלי שירה או עם השירה המקורית.</li>
+<li><b>🎧 מצב מדריך:</b> השירה המקורית נשמעת חלש ברקע – עוזר ללמוד את המנגינה.</li>
+<li><b>מיקסר:</b> עוצמה לכל ערוץ, השתקה, והורדה של כל ערוץ בנפרד (⬇).</li>
+<li><b>סולם:</b> מעלה או מוריד את גובה המוזיקה לפי הקול שלך. <b>מהירות:</b> האטה/האצה בלי לשנות גובה.</li>
+<li><b>לולאה A–B:</b> חוזר שוב ושוב על קטע קשה. <b>סימניות:</b> לסמן פזמון או קטע קשה ולקפוץ אליהם.</li>
+<li><b>ספירה לאחור</b> לפני תחילת השיר, <b>מטרונום</b> בקצב השיר, ו<b>מסך מלא</b> למילים.</li>
+<li><b>קהל:</b> כפתורים של מחיאות כפיים 👏, תשואות 🎉, וואו 😮, תופים 🥁, צופר 📯 וצחוק 😂.</li>
+<li><b>שמור בתיקייה</b> – שומר את השיר במחשב לתמיד (גם בלי אינטרנט). בלי שמירה, השיר נשאר בשרת 24 שעות.</li></ul>
+
+<h3 id="g-lyrics">📝 מילים</h3>
+<ul><li><b>תמלל אוטומטית</b> – מוציא את המילים מהשיר, מתוזמנות מילה-מילה.</li>
+<li><b>הקלד / ערוך</b> – כותבים או מתקנים מילים, שורה בכל שורה.</li>
+<li><b>תזמון בהקשה</b> – מנגנים ולוחצים רווח בתחילת כל שורה.</li>
+<li><b>דואט:</b> בעריכה כותבים בתחילת שורה <b>A:</b> או <b>B:</b> או <b>יחד:</b>. מסמנים "דואט", כותבים את שמות שני הזמרים – וכל אחד מקבל צבע משלו ותווית עם השם.</li>
+<li><b>מראה:</b> גודל אותיות, צבע רקע או תמונה שלך, ו<b>רקע מונפש</b> – 🌌 חלל, 🌊 ים, 🎆 זיקוקים, 🪩 דיסקו.</li>
+<li><b>💡 אורות מסיבה</b> – אורות צבעוניים שמהבהבים בקצב השיר.</li>
+<li><b>תרגום</b> של המילים לעברית או לאנגלית, <b>הורד LRC</b> (קובץ מילים מתוזמן) ו<b>הדפס</b>.</li></ul>
+
+<h3 id="g-rec">⏺ הקלטה ואפקטים</h3>
+<ul><li>לוחצים <b>"התחל להקליט"</b> (עדיף עם אוזניות). אפשר לסמן ניקוי רעשים ומצלמה.</li>
+<li>תוך כדי שירה רואים גרף: הקו הוורוד הוא הקול שלך, האפור – הזמר המקורי. בסוף מקבלים <b>ציון</b>.</li>
+<li><b>ניסיונות:</b> כל הקלטה נשמרת. אפשר להאזין, למחוק ולסמן אילו נכנסים לייצוא. שני זמרים? כל אחד מקליט בתורו ומסמנים את שניהם.</li>
+<li><b>אפקטים לקול:</b> הד, אקו, חיזוק בס ועוצמת הקול.</li>
+<li><b>אפקט קול מצחיק:</b> 🤖 רובוט, 🎈 הליום, 🐻 קול עמוק, 🏛 אולם גדול, 📞 טלפון ישן.</li>
+<li><b>✨ תיקון זיופים עדין</b> – מקרב בעדינות את הקול לתווים הנכונים.</li>
+<li>האפקטים נכנסים לקובץ שמייצאים ולביצוע ששולחים בקישור.</li></ul>
+
+<h3 id="g-export">⬇ ייצוא ושיתוף</h3>
+<ul><li><b>MP3 / WAV</b> – הביצוע שלך עם המוזיקה. אפשר לחתוך התחלה וסוף, מעבר הדרגתי ואיזון עוצמה.</li>
+<li><b>סרטון</b> – סרטון קריוקי עם המילים (ועם המצלמה, אם צילמת).</li>
+<li><b>שלח במייל</b> – מוריד את הקובץ ופותח מייל לשליחה.</li>
+<li><b>🔗 שתף את הביצוע שלי</b> – יוצר קישור. כל מי שפותח אותו שומע את הביצוע שלך ויכול למחוא כפיים.</li>
+<li><b>שתף קישור</b> – קישור לשיר עצמו (הפלייבק), כדי שחבר ישיר אותו.</li>
+<li><b>הורד הכל (ZIP)</b> – כל הערוצים, המילים וההקלטות בקובץ אחד.</li></ul>
+
+<h3 id="g-lib">🎵 השירים שלי</h3>
+<ul><li>כל השירים ששמרת: חיפוש לפי שם, תגית או שורה מהמילים. סינון: הכל / מועדפים ★ / אחרונים.</li>
+<li><b>פרופילים</b> – לכל בן משפחה רשימת שירים משלו (+ פרופיל).</li>
+<li><b>תגיות (#)</b>, <b>מועדפים</b>, ומחיקה.</li>
+<li><b>רשימות השמעה</b> – מוסיפים שירים (+📃) ומנגנים ברצף. <b>👥 שתף</b> – שולחים לחברים קישור, והם מוסיפים את כל הרשימה לספרייה שלהם.</li>
+<li><b>ההתקדמות שלי</b> – גרף של הציונים לאורך זמן.</li></ul>
+
+<h3 id="g-party">🎉 ערב קריוקי</h3>
+<ul><li><b>📺 מסך במה לטלוויזיה</b> – מחברים את המחשב לטלוויזיה ולוחצים. נפתח מסך מלא עם הזמר הבא, התור, טבלת המובילים והקוד להצטרפות.</li>
+<li><b>📱 חיבור טלפונים</b> – יוצר חדר ומציג <b>קוד QR</b> וקוד של 4 אותיות. האורחים סורקים מהטלפון ומצטרפים (צריך שהשרת יהיה דולק).</li>
+<li><b>סוג הערב:</b> שירה חופשית, <b>תחרות 🏆</b> (ציון לכל זמר וטבלת מובילים) או <b>קבוצות 👥</b> (שתי קבוצות עם ניקוד מצטבר, ואפשר לשנות את שמותיהן).</li>
+<li><b>תור הזמרים:</b> שם + שיר → "הוסף לתור". אפשר להזיז למעלה (▲), להסיר, ולבחור קבוצה לכל זמר. שירים שהוזמנו מהטלפון מסומנים 📱.</li>
+<li><b>▶ הזמר הבא</b> – השיר עולה במסך מלא עם שם הזמר. בסוף השיר (או "⏭ סיום") מופיע מסך <b>הצבעה בכוכבים</b> – מהטלפונים או בלחיצה על המסך. אחר כך מוצג הציון, ואם יש שיא – קונפטי.</li>
+<li><b>הציון:</b> ממוצע הכוכבים, וכשמקליטים – גם דיוק השירה. אתגר שהצליח מוסיף בונוס.</li>
+<li><b>להקליט כל ביצוע</b> – כל זמר מוקלט אוטומטית (לציון שירה ולאלבום).</li>
+<li><b>🎡 גלגל זמרים / גלגל שירים</b> – הגלגל בוחר מי שר או איזה שיר.</li>
+<li><b>🎯 אתגר לזמר הבא</b> – למשל בעיניים עצומות, בלי מילים על המסך, שיר מהיר יותר, סולם גבוה. אתגר שהצליח = 10 נקודות בונוס.</li>
+<li><b>🎂 מצב יום הולדת</b> – כותבים שם: באנר "מזל טוב" על המסך, קונפטי ומנגינת יום הולדת.</li>
+<li><b>👥 החברים שלנו</b> – לכל זמר פרופיל עם סמל וצבע (לוחצים על הסמל כדי להחליף), מספר שירים, שיא וממוצע.</li>
+<li><b>🏆 סיום הערב</b> – הכרזה על הזוכים עם פודיום וקונפטי (ובקבוצות – הקבוצה המנצחת).</li>
+<li><b>📜 תעודה</b> – תעודת "כוכב הקריוקי" עם שם, שיר, ציון ומקום, להורדה ולהדפסה.</li>
+<li><b>🎬 סרטון סיכום</b> – סרטון של כל הערב: כל הביצועים, הציונים, הזוכים ויום ההולדת.</li>
+<li><b>💿 אלבום הערב (ZIP)</b> – כל ההקלטות, התעודות, התוצאות והסרטון בקובץ אחד.</li>
+<li><b>🆕 ערב חדש</b> – מאפס את התוצאות (החברים נשארים).</li></ul>
+
+<h3 id="g-phone">📱 הטלפון כשלט (לאורחים)</h3>
+<ul><li>סורקים את קוד ה-QR מהמסך, כותבים שם (ובוחרים קבוצה, אם יש) ולוחצים "הצטרפות".</li>
+<li><b>בוחרים שיר</b> מהרשימה (יש חיפוש) – עד 3 שירים בתור לכל אחד. אפשר להסיר שיר שלך (✕).</li>
+<li><b>מדרגים</b> את מי שעל הבמה ב-1 עד 5 כוכבים.</li>
+<li><b>שולחים תגובות</b> 👏🎉❤️🔥😂😮 – הן עפות על מסך הטלוויזיה עם השם, ונשמע קול קהל.</li>
+<li>רואים את התור, טבלת המובילים, האתגר ומה הגלגל בחר.</li></ul>
+
+<h3 id="g-practice">🎯 תרגול</h3>
+<ul><li><b>חימום קולי</b> – לוחצים על תרגיל, מקשיבים ושרים אחריו. המיקרופון מראה אם אתה מדויק ואיזה תו אתה שר.</li>
+<li><b>מטרונום</b> – קובעים קצב ולוחצים הפעל/עצור.</li></ul>
+
+<h3 id="g-acc">👤 החשבון שלי</h3>
+<ul><li><b>הרשמה:</b> שם, מייל וסיסמה (לפחות 6 תווים). נשלח קוד בן 6 ספרות למייל – מקלידים אותו וזהו.</li>
+<li><b>כניסה</b> עם מייל וסיסמה. <b>שכחתי סיסמה</b> – מקבלים קוד במייל ובוחרים סיסמה חדשה.</li>
+<li>כשמחוברים, השירים נשמרים גם בחשבון – נכנסים מכל מחשב ורואים אותם (🔄 סנכרן עכשיו).</li></ul>
+
+<h3 id="g-contact">✉️ צור קשר</h3>
+<p>כותבים שם, מייל והודעה ולוחצים "שליחה". ההודעה מגיעה אלינו, ואתם מקבלים אישור במייל.</p>
+
+<h3 id="g-settings">⚙️ הגדרות</h3>
+<ul><li><b>כתובת השרת</b> – בדרך כלל נמצאת לבד. "בדוק" מראה אם השרת מחובר.</li>
+<li><b>שמירה במחשב</b> – כמה מקום תופסים השירים, ומחיקת הכל.</li>
+<li>קישורים לצור קשר, לחשבון וללוח המנהל.</li>
+<li><b>התקנה כאפליקציה</b> – כשהדפדפן מאפשר, מופיע למעלה כפתור "התקן" שיוצר אייקון במחשב.</li></ul>
+
+<h3 id="g-admin">🛠 לוח מנהל (רק לבעל האתר)</h3>
+<ul><li>נכנסים עם סיסמת המנהל (בקובץ admin-key.txt בתיקיית השרת).</li>
+<li><b>📊 כניסות</b> – מבקרים היום, השבוע והחודש, גרף של 30 יום, מדינות, מכשירים, מאיפה הגיעו, עמודים, שפה ופעולות.</li>
+<li><b>👥 משתמשים</b> – כל הנרשמים, מתי נכנסו לאחרונה, כמה שירים, חיפוש וחסימה.</li>
+<li><b>✉ הודעות</b> – פניות מ"צור קשר", עם סימון "טופל".</li>
+<li><b>📤 מיילים שנשלחו</b> – כל המיילים שהמערכת שלחה (כולל קודי אימות).</li>
+<li><b>📢 הודעה לכולם</b> – הודעה שמופיעה בראש האתר לכל המבקרים.</li>
+<li><b>🖥 שרת ושירים</b> – כמה שירים הופרדו, שגיאות, תור וזמן ממוצע.</li></ul>
+
+<h3 id="g-keys">⌨️ קיצורי מקשים</h3>
+<p>רווח – נגן/עצור (ובזמן תזמון – סימון שורה). Esc – יציאה ממסך הבמה.</p>`
 },
 en: {
   appName: 'My Karaoke Studio', company: 'Keter Technologies', install: 'Install',
@@ -142,20 +246,39 @@ en: {
   obTitle: 'Welcome to Karaoke Studio 🎤', ob1: 'Drop a song file or paste a YouTube link – the server separates the vocals from the music.',
   ob2: 'Change key and speed, show synced lyrics and sing full screen.', ob3: 'Record yourself, get a score, add effects and download MP3 or video.',
   skip: 'Skip', next: 'Next', letsGo: "Let's go!",
-  guideHtml: `<h2>How to use</h2>
-  <h3>1. Add a song</h3><p>Drop a song file anywhere on the page, click "Choose file", or paste a YouTube link and click "Get from YouTube". Pick 2 or 4 stems.</p>
-  <h3>2. Wait</h3><p>The first time each day the server wakes up (up to a minute). Separation takes about 1–4 minutes per song.</p>
-  <h3>3. Play</h3><p>"Karaoke" – no vocals. "Original" – with vocals. Use the mixer to keep some guide vocals or mute an instrument. Key fits the music to your voice; Speed helps when learning.</p>
-  <h3>4. Lyrics</h3><p>"Auto-transcribe" creates word-by-word synced lyrics. Or type them and use "Tap to sync": play and press Space at the start of each line. For duets start lines with A: or B:.</p>
-  <h3>5. Record</h3><p>Click "Start recording" (headphones recommended). Pink line = you, grey = original singer. You get a score at the end. Tick takes and export MP3, WAV or video.</p>
-  <h3>6. My songs</h3><p>"Save to my songs" keeps the song on your computer, even offline. Tags, favorites, playlists and family profiles.</p>
-  <h3>7. Karaoke night</h3><p>Add singers and songs to the queue and press "Next singer" each time.</p>
-  <h3>Shortcuts</h3><p>Space – play/pause (during sync – mark a line).</p>`
+  guideHtml: `<h2>📖 Complete guide</h2>
+<p class="muted">Everything on the site, page by page. Click a topic to jump to it.</p>
+<nav class="gtoc"><a href="#g-start">🚀 First</a><a href="#g-home">🏠 Menu</a><a href="#g-studio">🎙️ Studio</a><a href="#g-lyrics">📝 Lyrics</a><a href="#g-rec">⏺ Recording & effects</a><a href="#g-export">⬇ Export & share</a><a href="#g-lib">🎵 My songs</a><a href="#g-party">🎉 Karaoke night</a><a href="#g-phone">📱 Phone remote</a><a href="#g-practice">🎯 Practice</a><a href="#g-acc">👤 Account</a><a href="#g-contact">✉️ Contact</a><a href="#g-settings">⚙️ Settings</a><a href="#g-admin">🛠 Admin</a><a href="#g-keys">⌨️ Shortcuts</a></nav>
+<h3 id="g-start">🚀 First – the server</h3><p>Song separation, accounts, phone remotes, share links and the admin panel run through the server on your computer. When it is on, the site finds it automatically. Without it you can still play saved songs and practice.</p>
+<h3 id="g-home">🏠 Menu & navigation</h3><ul><li>Press <b>"Get started"</b> on the welcome screen to reach the menu.</li><li>Every page has a <b>"← Back"</b> button and a <b>"🏠 Main menu"</b> button.</li><li>Top bar: language, dark/light mode, and <b>👤</b> for your account.</li></ul>
+<h3 id="g-studio">🎙️ Studio</h3><ul><li>Drop a song file, choose a file, or paste a YouTube link. Choose 2 stems (vocals + backing) or 4 stems.</li><li>Separation takes about 1–4 minutes.</li><li>Play/stop/skip, click the waveform to jump. <b>Karaoke/Original</b>, <b>🎧 Guide mode</b> (original vocals quietly in the background).</li><li>Mixer with volume, mute and download per stem. <b>Key</b> and <b>Speed</b>, <b>A–B loop</b>, markers, countdown, metronome, fullscreen.</li><li><b>Crowd</b> buttons: applause, cheers, wow, drumroll, horn, laugh.</li><li><b>Save to my songs</b> keeps the song on your computer forever.</li></ul>
+<h3 id="g-lyrics">📝 Lyrics</h3><ul><li><b>Auto-transcribe</b>, <b>type/edit</b>, <b>tap to sync</b> (press Space at each line).</li><li><b>Duet:</b> start lines with A:, B: or AB:, tick "Duet" and type both names – each singer gets a color and a name tag.</li><li>Font size, backgrounds, <b>animated backgrounds</b> (space, sea, fireworks, disco) and <b>💡 party lights</b> to the beat.</li><li>Translate, download LRC, print.</li></ul>
+<h3 id="g-rec">⏺ Recording & effects</h3><ul><li>Press <b>"Start recording"</b> (headphones recommended), optional noise cleanup and camera. You get a <b>score</b>.</li><li>Takes: listen, delete, choose which go into the export.</li><li>Reverb, echo, bass boost, voice volume. <b>Fun voice effects:</b> robot, helium, deep, big hall, old phone. <b>✨ Gentle pitch correction.</b></li></ul>
+<h3 id="g-export">⬇ Export & share</h3><ul><li>MP3/WAV with trim, fade and normalize; karaoke <b>video</b>; send by email.</li><li><b>🔗 Share my performance</b> – a link anyone can open to hear you.</li><li><b>Share link</b> to the song, and <b>download all (ZIP)</b>.</li></ul>
+<h3 id="g-lib">🎵 My songs</h3><ul><li>Search, favorites, recent, tags, family profiles.</li><li>Playlists – play in a row, <b>👥 Share</b> a playlist link with friends.</li><li>Progress chart of your scores.</li></ul>
+<h3 id="g-party">🎉 Karaoke night</h3><ul><li><b>📺 TV stage screen</b> – fullscreen with next singer, queue, leaderboard and join code.</li><li><b>📱 Connect phones</b> – creates a room and shows a <b>QR code</b> (server must be on).</li><li>Modes: free, <b>competition</b>, <b>teams</b>.</li><li>Queue: add, move up, remove, pick team. <b>▶ Next singer</b> → song fullscreen → <b>star voting</b> → score and confetti.</li><li>Record every performance, <b>🎡 wheel</b> of singers/songs, <b>🎯 challenges</b> with bonus, <b>🎂 birthday mode</b>, <b>friend profiles</b>.</li><li><b>🏆 End of night</b> podium, <b>📜 certificates</b>, <b>🎬 summary video</b>, <b>💿 album ZIP</b>, new evening.</li></ul>
+<h3 id="g-phone">📱 Phone remote (guests)</h3><ul><li>Scan the QR, type your name (and team), join.</li><li>Pick songs (up to 3), rate the singer 1–5 stars, send reactions that fly on the TV.</li></ul>
+<h3 id="g-practice">🎯 Practice</h3><ul><li>Vocal warm-ups with a pitch meter, and a metronome.</li></ul>
+<h3 id="g-acc">👤 My account</h3><ul><li>Sign up with name, email and password – confirm with the 6-digit code from your email.</li><li>Sign in, forgot password (code by email), sync your songs across computers.</li></ul>
+<h3 id="g-contact">✉️ Contact</h3><p>Send us a message; you get an email confirmation.</p>
+<h3 id="g-settings">⚙️ Settings</h3><ul><li>Server address and test, storage used, delete all, links, install as an app.</li></ul>
+<h3 id="g-admin">🛠 Admin panel (site owner)</h3><ul><li>Password in admin-key.txt. Visits, users (search/block), messages, sent emails, site-wide announcement, server stats.</li></ul>
+<h3 id="g-keys">⌨️ Shortcuts</h3><p>Space – play/pause (or mark a line while syncing). Esc – leave the stage screen.</p>`
 }
 };
 
 /* מחרוזות לתוספות: חשבון, ערב קריוקי, אפקטים */
 Object.assign(window.I18N.he, {
+  back: '→ חזרה', privacyTitle: 'מדיניות פרטיות', privacyHtml: `<h2>🔒 מדיניות פרטיות</h2>
+<p class="muted">עודכן: אוקטובר 2026</p>
+<h3>מה נאסף</h3><ul>
+<li><b>סטטיסטיקת כניסות אנונימית:</b> מספר מזהה אקראי שנשמר בדפדפן שלך (בלי שם ובלי מייל), איזה עמוד נפתח, שפה, סוג מכשיר (מחשב/טלפון), מאיזה אתר הגעת, ומדינה כללית. המטרה – לדעת כמה משתמשים באתר ולשפר אותו.</li>
+<li><b>אם נרשמת לחשבון:</b> שם, כתובת מייל וסיסמה (שמורה מוצפנת – אף אחד לא יכול לקרוא אותה), ורשימת השירים שלך כדי שתוכל לראות אותם מכל מחשב.</li>
+<li><b>אם פנית ב"צור קשר":</b> השם, המייל וההודעה שכתבת.</li>
+<li><b>שירים שהעלית:</b> נשמרים בשרת לצורך ההפרדה, ונמחקים אוטומטית אחרי 24 שעות – אלא אם שמרת אותם בחשבון או שיתפת אותם.</li>
+<li><b>הקלטות:</b> נשמרות רק במחשב שלך. הן עולות לשרת רק אם בחרת "שתף את הביצוע שלי".</li></ul>
+<h3>מה לא עושים</h3><ul><li>לא מוכרים ולא מעבירים מידע לאף אחד.</li><li>לא משתמשים בפרסומות או במעקב של חברות אחרות.</li><li>המייל שלך משמש רק לקודי אימות, איפוס סיסמה ותשובות לפניות שלך.</li></ul>
+<h3>הזכויות שלך</h3><p>אפשר לבקש לראות, לתקן או למחוק את המידע שלך (כולל מחיקת החשבון) – דרך עמוד "צור קשר" או במייל bnyytmrkwt@gmail.com.</p>`, agreePriv: 'בהרשמה אני מסכים/ה ל',
   accTitle: 'החשבון שלי', perfTitle: 'ביצוע ששותף', mAccount: 'הרשמה וכניסה – השירים שלך בכל מחשב', mContact: 'שאלה, רעיון או בעיה? כתבו לנו',
   sharePerf: '🔗 שתף את הביצוע שלי', guideMode: '🎧 מצב מדריך', crowdLbl: 'קהל:',
   aniNone: 'בלי רקע מונפש', aniSpace: '🌌 חלל', aniSea: '🌊 ים', aniFire: '🎆 זיקוקים', aniDisco: '🪩 דיסקו', lights: '💡 אורות מסיבה',
@@ -165,6 +288,16 @@ Object.assign(window.I18N.he, {
   privacyNote: 'האתר סופר כניסות באופן אנונימי כדי לשפר את השירות.'
 });
 Object.assign(window.I18N.en, {
+  back: '← Back', privacyTitle: 'Privacy policy', privacyHtml: `<h2>🔒 Privacy policy</h2>
+<p class="muted">Updated: October 2026</p>
+<h3>What we collect</h3><ul>
+<li><b>Anonymous visit statistics:</b> a random ID stored in your browser (no name or email), the page opened, language, device type, referring site and general country – to know how many people use the site and improve it.</li>
+<li><b>If you create an account:</b> name, email and password (stored encrypted), and your song list so you can see it on any computer.</li>
+<li><b>If you contact us:</b> your name, email and message.</li>
+<li><b>Uploaded songs:</b> kept on the server for separation and deleted automatically after 24 hours, unless saved to your account or shared.</li>
+<li><b>Recordings:</b> stay on your computer; they are uploaded only if you choose "Share my performance".</li></ul>
+<h3>What we don't do</h3><ul><li>We don't sell or share your data.</li><li>No ads or third-party tracking.</li><li>Your email is used only for codes, password reset and replies.</li></ul>
+<h3>Your rights</h3><p>You can ask to see, correct or delete your data (including your account) via the Contact page or bnyytmrkwt@gmail.com.</p>`, agreePriv: 'By signing up I agree to the ',
   accTitle: 'My account', perfTitle: 'Shared performance', mAccount: 'Sign up and sign in – your songs on every computer', mContact: 'A question, idea or problem? Write to us',
   sharePerf: '🔗 Share my performance', guideMode: '🎧 Guide mode', crowdLbl: 'Crowd:',
   aniNone: 'No animated background', aniSpace: '🌌 Space', aniSea: '🌊 Sea', aniFire: '🎆 Fireworks', aniDisco: '🪩 Disco', lights: '💡 Party lights',

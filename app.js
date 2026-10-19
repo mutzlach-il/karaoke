@@ -156,12 +156,29 @@ async function fetchT(url, opts = {}, ms = 20000) {
 // השרת החינמי נרדם – מעירים אותו ומחכים בסבלנות (רעיון 4)
 async function wakeServer() {
   if (await pingServer(server(), 5000) || await discoverServer()) return true;
-  for (let i = 0; i < 3; i++) {
-    try { const r = await fetchT(server() + '/', {}, 15000); if (r.ok) return true; } catch {}
-    setJob(3, t('waking', { n: i + 1 }));
-    await new Promise(r => setTimeout(r, 10000));
-  }
-  return false;
+  // ניסיון נוסף אחד קצר (בלי לחכות דקה וחצי כשהמחשב פשוט כבוי)
+  setJob(3, t('waking', { n: 1 }));
+  await sleep(3000);
+  return (await pingServer(server(), 6000)) || !!(await discoverServer());
+}
+
+/* ===================== תור חכם – כשהמחשב של האתר כבוי ===================== */
+const QUEUE_URL = 'https://script.google.com/macros/s/AKfycbyzN3cw0mIFVgFWgKGF1rxE30TJEvNSENykJikRHwgniOeZMbHwTG_KyjHW_8AVWWH-/exec';
+async function offlineQueue(url) {
+  setJob(0, '😴 ' + L('המחשב שמפריד את השירים כבוי כרגע.', 'The song-separation computer is off right now.'), 'err');
+  const me = window.AUTH && AUTH.user;
+  const email = await ask(L('המחשב שמפריד את השירים כבוי כרגע 😴 השאירו מייל, ונשלח לכם קישור ברגע שהשיר מוכן:',
+    'The separation computer is off 😴 Leave your email and we\'ll send a link as soon as the song is ready:'), (me && me.email) || store.get('qEmail', ''));
+  if (!email) { setJob(0, t('noServer'), 'err'); return; }
+  store.set('qEmail', email);
+  setJob(30, L('שומר בתור…', 'Adding to queue…'));
+  try {
+    const r = await fetchT(QUEUE_URL, { method: 'POST', body: JSON.stringify({ action: 'queue_add', url, mode: MODE, email, name: (me && me.name) || '' }) }, 30000);
+    const d = await r.json();
+    if (d.ok) { setJob(100, '📬 ' + L(`השיר נכנס לתור! כשהמחשב יידלק נפריד אותו ונשלח מייל ל-${email} עם קישור.`, `Queued! When the computer is on we'll separate it and email ${email} a link.`), 'ok'); window.track && track('queue'); }
+    else setJob(0, '❌ ' + ({ 'bad email': L('כתובת המייל לא תקינה', 'Invalid email'), 'bad url': L('זה לא נראה כמו קישור יוטיוב תקין', 'Not a valid YouTube link'),
+      full: L('התור מלא כרגע, נסו שוב מחר', 'The queue is full, try tomorrow'), 'too many': L('כבר יש לך 3 שירים שמחכים בתור', 'You already have 3 songs waiting') }[d.error] || d.error), 'err');
+  } catch { setJob(0, '❌ ' + t('netErr'), 'err'); }
 }
 
 async function apiError(r) {
@@ -175,7 +192,7 @@ async function submit(kind, payload) {
   $('#ytBtn').disabled = $('#pickBtn').disabled = true;
   try {
     setJob(2, t('connecting'));
-    if (!(await wakeServer())) { setJob(0, t('noServer'), 'err'); return; }
+    if (!(await wakeServer())) { if (kind === 'file') setJob(0, t('noServer'), 'err'); else await offlineQueue(payload); return; }
     let r;
     if (kind === 'file') {
       const fd = new FormData(); fd.append('file', payload); fd.append('mode', MODE);

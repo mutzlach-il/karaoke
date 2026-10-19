@@ -17,6 +17,7 @@
 <header class="top noprint">
   <a class="logo" href="#home"><span>🎤</span><span class="k" data-i18n="appName">אולפן הקריוקי שלי</span></a>
   <nav class="tabs" id="tabs">
+    <button id="backBtn" class="backbtn" data-i18n="back">→ חזרה</button>
     <button data-view="home" data-i18n="tabHome">🏠 תפריט ראשי</button>
     <span class="ptitle" id="pageTitle"></span>
   </nav>
@@ -335,7 +336,7 @@
 
 <!-- =================== מדריך =================== -->
 <section id="view-guide" class="hidden">
-  <div class="card" id="guideBox"></div>
+  <div class="card guide" id="guideBox"></div>
 </section>
 
 <!-- =================== הגדרות =================== -->
@@ -364,11 +365,12 @@
 <section id="view-remote" class="hidden"><div id="remoteBox" class="remote"></div></section>
 <!-- =================== ביצוע ששותף =================== -->
 <section id="view-perf" class="hidden"><div id="perfBox"></div></section>
+<!-- =================== מדיניות פרטיות =================== -->
+<section id="view-privacy" class="hidden"><div class="card narrow guide" id="privacyBox"></div></section>
 </main>
 
 <div id="printArea" class="hidden printable"></div>
-<footer class="noprint"><a href="#contact" data-i18n="contact">צור קשר</a> · <a href="#account" data-i18n="accTitle">החשבון שלי</a>
-  <div class="muted small" data-i18n="privacyNote">האתר סופר כניסות באופן אנונימי כדי לשפר את השירות.</div></footer>
+<footer class="noprint"><a href="#contact" data-i18n="contact">צור קשר</a> · <a href="#account" data-i18n="accTitle">החשבון שלי</a> · <a href="#privacy" data-i18n="privacyTitle">מדיניות פרטיות</a></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>

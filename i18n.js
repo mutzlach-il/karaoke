@@ -151,74 +151,25 @@ en: {
   <h3>6. My songs</h3><p>"Save to my songs" keeps the song on your computer, even offline. Tags, favorites, playlists and family profiles.</p>
   <h3>7. Karaoke night</h3><p>Add singers and songs to the queue and press "Next singer" each time.</p>
   <h3>Shortcuts</h3><p>Space – play/pause (during sync – mark a line).</p>`
-},
-yi: {
-  appName: 'קאַראַאָקע סטודיאָ', company: 'כתר טעכנאָלאָגיעס', install: 'אינסטאַלירן',
-  tabStudio: 'סטודיאָ', tabLibrary: 'מײַנע לידער', tabParty: 'שׂמחה־מאָדע', tabPractice: 'איבונג', tabGuide: 'אָנווײַזער', tabSettings: 'באַשטימונגען',
-  newSong: 'נײַ ליד', separation: 'צעטיילן:', mode2: 'געזאַנג + מוזיק', mode4: '4 קאַנאַלן (געזאַנג, פּויקן, באַס, אינסטרומענטן)',
-  mode2short: '2 קאַנאַלן', mode4short: '4 קאַנאַלן',
-  dropHere: 'שלעפּ אַהער אַ ליד־טעקע, אָדער דריק צו קלײַבן', dropHint: 'MP3, WAV, M4A, OGG, FLAC – ביז 10 מינוט', pickFile: 'קלײַב אַ טעקע',
-  or: 'אָדער', fromYoutube: 'ברענג פֿון יוטוב', badLink: 'לייג אַרײַן אַ יוטוב־לינק',
-  connecting: 'פֿאַרבינדט זיך מיטן סערווער…', waking: 'דער סערווער וועקט זיך אויף, ביז אַ מינוט… ({n})', noServer: 'דער סערווער ענטפֿערט נישט. פּרוּווט ווידער אין עטלעכע מינוט.',
-  uploading: 'לאָדט אַרויף…', serverErr: 'סערווער־פֿעלער ({code})', netErr: 'פֿאַרבינדונג־פּראָבלעם. פּרוּווט נאָכאַמאָל.',
-  inQueue: 'אין דער ריי – נומער {n}.',
-  stQueued: 'אין דער ריי', stDownloading: 'לאָדט אַראָפּ פֿון יוטוב', stPreparing: 'גרייט צו די טעקע', stSeparating: 'צעטיילט', stReady: 'גרייט!', stError: 'פֿעלער', stWorking: 'אַרבעט',
-  song: 'ליד', saveToLib: 'היט אָפּ', share: 'טייל אַ לינק', downloadAll: 'אַראָפּלאָדן אַלץ (ZIP)',
-  karaoke: 'קאַראַאָקע', original: 'אָריגינעל', countdown: 'אָפּציילן', fullscreen: 'פֿולער עקראַן',
-  pitch: 'טאָנאַרט', pitchHint: 'טויש די הייך פֿון דער מוזיק לויט דײַן קול', tempo: 'גיכקייט', tempoHint: 'פּאַמעלעכער/גיכער אָן טוישן די הייך',
-  loop: 'שלייף', clear: 'אויסמעקן', markers: 'צייכנס', markChorus: 'צייכן רעפֿרען', goChorus: 'שפּרינג צום רעפֿרען', markHard: 'שווערער טייל',
-  chorusMarked: 'רעפֿרען געצייכנט', hardMarked: 'געצייכנט פֿאַר איבונג', noChorus: 'נאָך נישט געצייכנט קיין רעפֿרען.',
-  mixer: 'מיקסער', metronome: 'מעטראָנאָם', mute: 'שטיל', unmute: 'אויפֿשטילן', download: 'אַראָפּלאָדן',
-  stVocals: '🎤 געזאַנג', stMusic: '🎵 מוזיק', stDrums: '🥁 פּויקן', stBass: '🎸 באַס', stOther: '🎹 אינסטרומענטן',
-  expires24: 'בלײַבט אויפֿן סערווער 24 שעה – דריק "היט אָפּ" צו האַלטן', savedOffline: 'אָפּגעהיט ✓',
-  fileGone: 'די טעקע איז שוין נישטאָ אויפֿן סערווער. לאָד אַרויף נאָכאַמאָל.',
-  lyrics: 'ווערטער', autoLang: 'אויטאָמאַטיש', autoLyrics: 'אויטאָמאַטיש טראַנסקריבירן', editLyrics: 'שרײַב / רעדאַקטיר', tapSync: 'סינכראָניזירן מיט קלאַפּן',
-  noLyrics: 'נאָך קיין ווערטער. דריק "אויטאָמאַטיש טראַנסקריבירן" אָדער "שרײַב".', noLyricsShort: 'קיין ווערטער',
-  fontSize: 'גרייס:', bgBlack: 'שוואַרץ', bg1: 'לילאַ־ראָזע', bg2: 'גרין־בלוי', bg3: 'זונפֿאַרגאַנג', bg4: 'אַנימאַציע', bgImg: 'מײַן בילד…',
-  noTranslate: 'אָן איבערזעצונג', duet: 'דועט', downloadLrc: 'אַראָפּלאָדן LRC', print: 'דרוקן',
-  lyricsPh: 'איין שורה אין יעדער שורה…', save: 'היט אָפּ', duetHint: 'פֿאַר אַ דועט: הייב אָן אַ שורה מיט A: אָדער B:',
-  tapHint: 'דאָס ליד שפּילט. דריק ספּייס ווען יעדע שורה הייבט זיך אָן.', tapNow: 'יעצט! (ספּייס)', done: 'פֿאַרטיק',
-  transcribing: 'טראַנסקריבירט…', lyricsReady: 'די ווערטער זענען גרייט ✓', typeFirst: 'שרײַב פֿריער די ווערטער', timingSaved: 'אָפּגעהיט ✓', translating: 'זעצט איבער…',
-  record: 'רעקאָרדירן', startRec: 'הייב אָן רעקאָרדירן', stopRec: 'שטעל אָפּ', noiseClean: 'רעדוצירן רעש', withCam: 'מיט קאַמערע',
-  twoSingersHint: 'צוויי זינגער? רעקאָרדירט איינער נאָכן אַנדערן און צייכנט ביידע פּרוּוון.',
-  liveScore: 'לעבעדיקע נאָטע:', takes: 'פּרוּוון', noTakes: 'נאָך נישט רעקאָרדירט.', take: 'פּרוּוו', score: 'נאָטע', inExport: 'עקספּאָרט',
-  micDenied: 'קיין צוטריט צום מיקראָפֿאָן.', camDenied: 'קיין צוטריט צו דער קאַמערע', yourScore: 'דײַן נאָטע: {s} פֿון 100',
-  effects: 'עפֿעקטן', reverb: 'אָפּקלאַנג', echo: 'עכאָ', bass: 'באַס־שטאַרקונג', voiceVol: 'מײַן קול',
-  exportMix: 'עקספּאָרטירן', trimStart: 'שנײַדן אָנהייב (סעק.)', trimEnd: 'שנײַדן סוף (סעק., 0 = ביזן סוף)', fade: 'פּאַמעלעכער איבערגאַנג', normalize: 'גלײַכן דעם קלאַנג',
-  video: 'ווידעאָ', sendMail: 'שיק אין אימעיל', rendering: 'גרייט צו…', myVersion: 'מײַן ווערסיע', exportFail: 'עקספּאָרט דורכגעפֿאַלן',
-  mailSubject: 'מײַן ווערסיע פֿון {t}', mailBody: 'צוגעלייגט מײַן רעקאָרדירונג.',
-  noVideoSupport: 'דער בלעטערער שטיצט נישט ווידעאָ. פּרוּווט כראָם.', videoHint: 'דער ווידעאָ ווערט געמאַכט אין עכטער צײַט – אַזוי לאַנג ווי דאָס ליד.',
-  start: 'אָנהייבן', cancel: 'אָפּזאָגן', ok: 'גוט', recordingVideo: 'מאַכט ווידעאָ…', videoReady: 'דער ווידעאָ איז אַראָפּגעלאָדן ✓',
-  saving: 'היט אָפּ…', linkCopied: 'דער לינק איז קאָפּירט ✓', copyLink: 'קאָפּיר דעם לינק', zipping: 'גרייט ZIP…',
-  mainProfile: 'הויפּט', addProfile: '+ פּראָפֿיל', profileName: 'נאָמען פֿון פּראָפֿיל',
-  searchPh: 'זוך לויט נאָמען, צייכן אָדער אַ שורה…', all: 'אַלץ', favorites: 'באַליבטע', recent: 'לעצטע',
-  plays: 'מאָל', best: 'בעסטע', libEmpty: 'נאָך ליידיק. עפֿן אַ ליד און דריק "היט אָפּ".',
-  confirmDelete: 'אויסמעקן דאָס ליד?', tagsPrompt: 'צייכנס, אָפּגעטיילט מיט קאָמעס',
-  playlists: 'שפּיל־רשימות', newPlaylist: '+ נײַע רשימה', plName: 'נאָמען פֿון רשימה', plWhich: 'צו וועלכער רשימה?', myPlaylist: 'מײַן רשימה',
-  addedTo: 'צוגעלייגט צו "{n}" ✓', songs: 'לידער', playAll: 'שפּיל אַלץ', noPlaylists: 'נאָך קיין רשימות.', plDone: 'די רשימה איז פֿאַרטיק',
-  myProgress: 'מײַן פֿאָרשריט', noScores: 'רעקאָרדיר לידער צו זען דײַן פֿאָרשריט.', progressTxt: 'די וואָך: {n} רעקאָרדירונגען, דורכשניט {avg}. אַלגעמיין: {all}.',
-  partyTitle: 'שׂמחה־מאָדע – ריי פֿון זינגער', partyHint: 'יעדער גאַסט קלײַבט אַ ליד און גייט אין דער ריי.',
-  singerName: 'נאָמען פֿון זינגער', addToQueue: 'לייג צו', nextSinger: '▶ דער קומענדיקער', clearQueue: 'אויסמעקן ריי', queueEmpty: 'די ריי איז ליידיק', guest: 'גאַסט',
-  warmups: 'אָנוואַרעמען דעם קול', warmupHint: 'דריק אויף אַן איבונג, הער זיך צו, און זינג נאָך.',
-  micOn: 'צינד אָן מיקראָפֿאָן', micOff: 'לעש אויס מיקראָפֿאָן', startStop: 'אָנהייבן / אָפּשטעלן',
-  wuScale: 'סקאַלע אַרויף און אַראָפּ', wuArp: 'אַרפּעדזשיאָ', wuFive: '5 טענער', wuHigh: 'הויך', wuLow: 'נידעריק',
-  serverUrl: 'סערווער־אַדרעס', test: 'פּרוּוו', checking: 'קאָנטראָלירט…', serverOk: 'דער סערווער אַרבעט (ריי: {q})',
-  offline: 'אָפּהיטן אויפֿן קאָמפּיוטער', offlineHint: 'אָפּגעהיטענע לידער אַרבעטן אויך אָן אינטערנעט.', storageUsed: 'באַנוצט: {mb}MB', clearAll: 'מעק אויס אַלץ',
-  confirmClearAll: 'אויסמעקן אַלע לידער?', cleared: 'אויסגעמעקט ✓',
-  contact: 'קאָנטאַקט', sendEmail: '✉ שיק אימעיל', admin: 'פֿאַרוואַלטער', adminPass: 'פֿאַרוואַלטער־פּאַראָל', enter: 'אַרײַן',
-  adDone: 'צעטיילט', adFailed: 'דורכגעפֿאַלן', adYoutube: 'פֿון יוטוב', adUpload: 'פֿון טעקעס', adUsers: 'באַניצער הײַנט', adAvg: 'דורכשניט־צײַט',
-  adQueue: 'ריי', adDisk: 'פּלאַץ', adUptime: 'אַרבעט־צײַט', adHours: 'טעטיקייט לויט שעה', adJobs: 'לעצטע אַרבעטן', adErrors: 'לעצטע פֿעלערן',
-  status: 'מצב', time: 'צײַט', none: 'קיינע',
-  loadingShared: 'לאָדט אַ געטיילט ליד…',
-  obTitle: 'ברוך הבא אין קאַראַאָקע סטודיאָ 🎤', ob1: 'שלעפּ אַ ליד אָדער לייג אַרײַן אַ יוטוב־לינק – דער סערווער צעטיילט דעם געזאַנג פֿון דער מוזיק.',
-  ob2: 'טויש טאָנאַרט און גיכקייט, ווײַז ווערטער און זינג אויף פֿולן עקראַן.', ob3: 'רעקאָרדיר זיך, באַקום אַ נאָטע און לאָד אַראָפּ MP3 אָדער ווידעאָ.',
-  skip: 'איבערשפּרינגען', next: 'ווײַטער', letsGo: 'יאַללאַ!',
-  guideHtml: `<h2>אָנווײַזער</h2>
-  <h3>1. ברענג אַ ליד</h3><p>שלעפּ אַ טעקע, דריק "קלײַב אַ טעקע", אָדער לייג אַרײַן אַ יוטוב־לינק.</p>
-  <h3>2. וואַרט</h3><p>דאָס ערשטע מאָל אין טאָג וועקט זיך דער סערווער אויף (ביז אַ מינוט). צעטיילן נעמט 1–4 מינוט.</p>
-  <h3>3. שפּילן</h3><p>"קאַראַאָקע" – אָן געזאַנג. "אָריגינעל" – מיט געזאַנג. טאָנאַרט און גיכקייט לויט דײַן קול.</p>
-  <h3>4. ווערטער</h3><p>"אויטאָמאַטיש טראַנסקריבירן" אָדער שרײַב אַליין און סינכראָניזיר מיט ספּייס.</p>
-  <h3>5. רעקאָרדירן</h3><p>דריק "הייב אָן רעקאָרדירן" (בעסער מיט אויערהערער). צום סוף באַקומסטו אַ נאָטע.</p>
-  <h3>6. מײַנע לידער</h3><p>"היט אָפּ" האַלט דאָס ליד אויפֿן קאָמפּיוטער, אויך אָן אינטערנעט.</p>`
 }
 };
+
+/* מחרוזות לתוספות: חשבון, ערב קריוקי, אפקטים */
+Object.assign(window.I18N.he, {
+  accTitle: 'החשבון שלי', perfTitle: 'ביצוע ששותף', mAccount: 'הרשמה וכניסה – השירים שלך בכל מחשב', mContact: 'שאלה, רעיון או בעיה? כתבו לנו',
+  sharePerf: '🔗 שתף את הביצוע שלי', guideMode: '🎧 מצב מדריך', crowdLbl: 'קהל:',
+  aniNone: 'בלי רקע מונפש', aniSpace: '🌌 חלל', aniSea: '🌊 ים', aniFire: '🎆 זיקוקים', aniDisco: '🪩 דיסקו', lights: '💡 אורות מסיבה',
+  duetA: 'שם זמר/ת A', duetB: 'שם זמר/ת B', duetHint2: 'בעריכת המילים: A: / B: / יחד: בתחילת שורה',
+  voiceFx: 'אפקט קול מצחיק', fxNone: 'בלי', fxRobot: '🤖 רובוט', fxHelium: '🎈 הליום (קול דק)', fxDeep: '🐻 קול עמוק', fxHall: '🏛 אולם גדול', fxPhone: '📞 טלפון ישן',
+  pitchFix: '✨ תיקון זיופים עדין', contactBtn: '✉ צור קשר', accBtn: '👤 החשבון שלי', adminBtn: '🛠 לוח מנהל',
+  privacyNote: 'האתר סופר כניסות באופן אנונימי כדי לשפר את השירות.'
+});
+Object.assign(window.I18N.en, {
+  accTitle: 'My account', perfTitle: 'Shared performance', mAccount: 'Sign up and sign in – your songs on every computer', mContact: 'A question, idea or problem? Write to us',
+  sharePerf: '🔗 Share my performance', guideMode: '🎧 Guide mode', crowdLbl: 'Crowd:',
+  aniNone: 'No animated background', aniSpace: '🌌 Space', aniSea: '🌊 Sea', aniFire: '🎆 Fireworks', aniDisco: '🪩 Disco', lights: '💡 Party lights',
+  duetA: 'Singer A name', duetB: 'Singer B name', duetHint2: 'In the lyrics editor: start a line with A: / B: / AB:',
+  voiceFx: 'Fun voice effect', fxNone: 'None', fxRobot: '🤖 Robot', fxHelium: '🎈 Helium', fxDeep: '🐻 Deep voice', fxHall: '🏛 Big hall', fxPhone: '📞 Old phone',
+  pitchFix: '✨ Gentle pitch correction', contactBtn: '✉ Contact us', accBtn: '👤 My account', adminBtn: '🛠 Admin panel',
+  privacyNote: 'This site counts visits anonymously to improve the service.'
+});

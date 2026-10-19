@@ -207,7 +207,7 @@ async function renderAdmin() {
     return;
   }
   const TABS = [['overview', L('📊 כניסות', '📊 Visits')], ['users', L('👥 משתמשים', '👥 Users')], ['messages', L('✉ הודעות', '✉ Messages')], ['reports', L('🚩 דיווחים', '🚩 Reports')], ['limits', L('⚙️ הגבלות ואתגר', '⚙️ Limits & challenge')],
-    ['outbox', L('📤 מיילים שנשלחו', '📤 Sent emails')], ['announce', L('📢 הודעה לכולם', '📢 Announcement')], ['server', L('🖥 שרת ושירים', '🖥 Server & songs')]];
+    ['outbox', L('📤 מיילים שנשלחו', '📤 Sent emails')], ['announce', L('📢 הודעה לכולם', '📢 Announcement')], ['server', L('🖥 שרת ושירים', '🖥 Server & songs')], ['help', L('📖 הוראות למנהל', '📖 Admin guide')]];
   box.innerHTML = `<div class="row"><h2 class="grow" style="margin:0">🛠 ${t('admin')}</h2><button class="btn sm" id="admRef">🔄</button><button class="btn sm" id="admOut">${L('יציאה', 'Log out')}</button></div>
     <div class="seg admtabs" style="margin:12px 0">${TABS.map(([k, n]) => `<button data-at="${k}" class="${ADM.tab === k ? 'on' : ''}">${n}</button>`).join('')}</div><div id="admBody">${t('checking')}</div>`;
   $$('[data-at]').forEach(b => b.onclick = () => { ADM.tab = b.dataset.at; renderAdmin(); });
@@ -283,6 +283,19 @@ async function renderAdmin() {
       body.innerHTML = `<p class="muted">${L('ההודעה תופיע בראש האתר לכל המבקרים. השאירו ריק כדי להסיר.', 'The message appears at the top of the site for all visitors. Leave empty to remove.')}</p>
         <textarea id="annText" rows="3" maxlength="300">${esc(d.text || '')}</textarea><div class="row" style="margin-top:10px"><button class="btn pri" id="annSave">${t('save')}</button><span class="status" id="annMsg"></span></div>`;
       $('#annSave').onclick = async () => { await api('/admin/announce', { method: 'POST', admin: k, body: { text: $('#annText').value.trim() } }); $('#annMsg').textContent = '✅'; store.set('annSeen', ''); loadAnnounce(); };
+    } else if (ADM.tab === 'help') {
+      body.innerHTML = `<div class="guide">${L(`<h3>📖 הוראות למנהל (רק אתה רואה את זה)</h3>
+<ul><li>נכנסים עם סיסמת המנהל (בקובץ admin-key.txt בתיקיית השרת).</li>
+<li><b>📊 כניסות</b> – מבקרים היום, השבוע והחודש, גרף של 30 יום, מדינות, מכשירים, מאיפה הגיעו, עמודים, שפה ופעולות.</li>
+<li><b>👥 משתמשים</b> – כל הנרשמים, מתי נכנסו לאחרונה, כמה שירים, חיפוש וחסימה.</li>
+<li><b>✉ הודעות</b> – פניות מ"צור קשר", עם סימון "טופל".</li>
+<li><b>🚩 דיווחים</b> – קליפים ותגובות שמשתמשים דיווחו עליהם. לכל דיווח: "בסדר, להשאיר", "להסתיר" או "למחוק".</li>
+<li><b>⚙️ הגבלות ואתגר</b> – כמה שירים, קליפים וערבי קריוקי מותר לכל אחד, והאתגר השבועי (תגית + תיאור). השינוי נכנס לתוקף מיד. אתה עצמך בלי הגבלה.</li>
+<li><b>📤 מיילים שנשלחו</b> – כל המיילים שהמערכת שלחה (כולל קודי אימות).</li>
+<li><b>📢 הודעה לכולם</b> – הודעה שמופיעה בראש האתר לכל המבקרים.</li>
+<li><b>🖥 שרת ושירים</b> – כמה שירים הופרדו, שגיאות, תור וזמן ממוצע.</li>
+<li>הקליפים והסטורי של הקהילה נשמרים במחשב שלך, בתיקיית השרת (data\\media).</li></ul>`,
+`<h3>📖 Admin guide (only you see this)</h3><ul><li>Password in admin-key.txt. Visits, users (search/block), messages, reports (keep/hide/delete), limits & weekly challenge, sent emails, site-wide announcement, server stats. Community clips are stored on your computer in the server folder (data\\media).</li></ul>`)}</div>`;
     } else if (ADM.tab === 'server') {
       const d = await api('/admin/stats', { admin: k }); const maxH = Math.max(1, ...Object.values(d.hourly));
       body.innerHTML = `<div class="stats">

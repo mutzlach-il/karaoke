@@ -18,6 +18,7 @@ async function api(path, { method = 'GET', body, admin, form, ms = 30000, srv } 
   const h = {};
   if (body !== undefined && !form) h['Content-Type'] = 'application/json';
   if (AUTH.tok) h.Authorization = 'Bearer ' + AUTH.tok;
+  h['X-Visitor'] = VID;
   if (admin) h['X-Admin-Key'] = admin;
   const r = await fetchT((srv || server()) + path, { method, headers: h, body: form || (body !== undefined ? JSON.stringify(body) : undefined) }, ms);
   if (!r.ok) { const e = new Error(await apiError(r)); e.status = r.status; throw e; }
@@ -25,6 +26,7 @@ async function api(path, { method = 'GET', body, admin, form, ms = 30000, srv } 
 }
 
 /* ===================== סטטיסטיקות כניסה (אנונימי) ===================== */
+function authHeaders() { const h = { 'X-Visitor': VID }; if (AUTH.tok) h.Authorization = 'Bearer ' + AUTH.tok; return h; }
 const VID = store.get('vid', '') || (() => { const v = Math.random().toString(36).slice(2, 10) + Date.now().toString(36); store.set('vid', v); return v; })();
 function devType() { const m = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent); return m ? (Math.min(screen.width, screen.height) > 700 ? 'tablet' : 'mobile') : 'desktop'; }
 let trackQ = Promise.resolve();
@@ -120,7 +122,7 @@ function renderAccount() {
       catch (er) { if (er.status === 412) { ACC.step = 'verify'; renderAccount(); accMsg(er.message, true); return; } throw er; }
     } else if (ACC.step === 'register') {
       ACC.email = v('aEmail');
-      await api('/auth/register', { method: 'POST', body: { email: ACC.email, name: v('aName'), password: $('#aPw').value } });
+      await api('/auth/register', { method: 'POST', body: { email: ACC.email, name: v('aName'), password: $('#aPw').value, invite: store.get('invite', '') || undefined } });
       ACC.step = 'verify'; renderAccount(); accMsg(L('הקוד נשלח – בדוק את המייל (גם בתיקיית הספאם).', 'Code sent – check your inbox (and spam).'), true); track('register');
     } else if (ACC.step === 'verify') {
       await loggedIn(await api('/auth/verify', { method: 'POST', body: { email: ACC.email, code: v('aCode') } }));
@@ -141,7 +143,7 @@ async function syncLib() {
   const local = await DB.all('songs'); const lmap = Object.fromEntries(local.map(s => [s.id, s]));
   const rmap = Object.fromEntries(remote.map(m => [m.id, m])); let added = 0, up = 0;
   for (const m of remote) if (m && m.id && !lmap[m.id]) { await DB.put('songs', m.id, { ...m, offline: false }); added++; }
-  for (const s of local) { const m = songMeta(s); if (!rmap[s.id] || JSON.stringify(rmap[s.id]) !== JSON.stringify(m)) { try { await api('/lib/' + encodeURIComponent(s.id), { method: 'PUT', body: m }); up++; } catch {} } }
+  for (const s of local) { const m = songMeta(s); if (!rmap[s.id] || JSON.stringify(rmap[s.id]) !== JSON.stringify(m)) { try { await api('/lib/' + encodeURIComponent(s.id), { method: 'PUT', body: m }); up++; } catch (e) { if (e.status === 429 && !syncLib.warned) { syncLib.warned = 1; toast('ℹ️ ' + e.message, 7000); } } } }
   store.set('lastSync', Date.now());
   if (added && curView() === 'library') renderLibrary();
   return { up, added };
@@ -204,7 +206,7 @@ async function renderAdmin() {
     };
     return;
   }
-  const TABS = [['overview', L('📊 כניסות', '📊 Visits')], ['users', L('👥 משתמשים', '👥 Users')], ['messages', L('✉ הודעות', '✉ Messages')],
+  const TABS = [['overview', L('📊 כניסות', '📊 Visits')], ['users', L('👥 משתמשים', '👥 Users')], ['messages', L('✉ הודעות', '✉ Messages')], ['reports', L('🚩 דיווחים', '🚩 Reports')], ['limits', L('⚙️ הגבלות ואתגר', '⚙️ Limits & challenge')],
     ['outbox', L('📤 מיילים שנשלחו', '📤 Sent emails')], ['announce', L('📢 הודעה לכולם', '📢 Announcement')], ['server', L('🖥 שרת ושירים', '🖥 Server & songs')]];
   box.innerHTML = `<div class="row"><h2 class="grow" style="margin:0">🛠 ${t('admin')}</h2><button class="btn sm" id="admRef">🔄</button><button class="btn sm" id="admOut">${L('יציאה', 'Log out')}</button></div>
     <div class="seg admtabs" style="margin:12px 0">${TABS.map(([k, n]) => `<button data-at="${k}" class="${ADM.tab === k ? 'on' : ''}">${n}</button>`).join('')}</div><div id="admBody">${t('checking')}</div>`;
@@ -247,6 +249,29 @@ async function renderAdmin() {
         <span class="muted">${when(m.ts)}</span>${m.handled ? `<span class="pill">✓ ${L('טופל', 'Handled')}</span>` : `<button class="btn sm" data-hd="${m.id}">✓ ${L('סמן כטופל', 'Mark handled')}</button>`}</div>
         <div class="msgtext">${esc(m.text)}</div></div>`).join('') : `<div class="muted">${L('אין הודעות עדיין.', 'No messages yet.')}</div>`;
       $$('[data-hd]').forEach(b => b.onclick = async () => { await api(`/admin/messages/${b.dataset.hd}/handled`, { method: 'POST', admin: k }); renderAdmin(); });
+    } else if (ADM.tab === 'reports') {
+      const rs = await api('/admin/reports', { admin: k });
+      body.innerHTML = rs.length ? rs.map(r => `<div class="msg ${r.handled ? 'done' : ''}"><div class="row"><b class="grow">🚩 ${esc(r.reason)}</b><span class="muted">${when(r.ts)}${r.reporter_user ? ' · ' + esc(r.reporter_user.name) : ''}</span></div>
+        ${r.clip ? `<div class="row" style="margin-top:8px"><video src="${esc(server() + r.clip.file)}" controls style="width:160px;border-radius:10px"></video><div class="grow"><b>${esc(r.clip.user.name)}</b><div>${esc(r.clip.caption || '')}</div>${r.clip.hidden ? `<span class="pill">${L('מוסתר', 'Hidden')}</span>` : ''}</div></div>` : ''}
+        ${r.comment ? `<div class="msgtext">💬 <b>${esc(r.comment.user.name)}:</b> ${esc(r.comment.text)}</div>` : ''}
+        ${!r.clip && !r.comment ? `<div class="muted">${L('התוכן כבר נמחק', 'Content already deleted')}</div>` : ''}
+        ${r.handled ? `<span class="pill">✓ ${L('טופל', 'Handled')}</span>` : `<div class="row" style="margin-top:8px"><button class="btn sm" data-rp="${r.id}" data-a="ok">✓ ${L('בסדר, להשאיר', 'OK, keep')}</button>
+          <button class="btn sm" data-rp="${r.id}" data-a="hide">🙈 ${L('להסתיר', 'Hide')}</button><button class="btn sm" data-rp="${r.id}" data-a="delete">🗑 ${L('למחוק', 'Delete')}</button></div>`}</div>`).join('')
+        : `<div class="muted">${L('אין דיווחים 🎉', 'No reports 🎉')}</div>`;
+      $$('[data-rp]').forEach(b => b.onclick = async () => { await api('/admin/reports/' + b.dataset.rp, { method: 'POST', admin: k, body: { action: b.dataset.a } }); renderAdmin(); });
+    } else if (ADM.tab === 'limits') {
+      const d = await api('/admin/limits', { admin: k }); const Lm = d.limits;
+      const F = [['guest_songs_day', L('שירים ביום – אורח (בלי הרשמה)', 'Songs/day – guest')], ['user_songs_day', L('שירים ביום – משתמש רשום', 'Songs/day – registered')],
+        ['lib_max', L('שירים שמורים בחשבון', 'Saved songs per account')], ['rooms_week', L('ערבי קריוקי עם טלפונים בשבוע', 'Phone karaoke nights per week')],
+        ['clips_day', L('קליפים וסטורי ביום', 'Clips & stories per day')], ['global_songs_day', L('תקרה יומית לכל האתר', 'Daily cap for the whole site')],
+        ['invite_bonus', L('בונוס שירים לכל חבר שהוזמן', 'Bonus songs per invited friend')]];
+      body.innerHTML = `<p class="muted">${L('אתה (המנהל) בלי הגבלות. השינויים נכנסים לתוקף מיד.', 'You (admin) are unlimited. Changes apply immediately.')}</p>
+        <div class="limgrid">${F.map(([key, lbl]) => `<label>${lbl}<input type="number" min="0" data-lim="${key}" value="${Lm[key]}"></label>`).join('')}</div>
+        <h3>🎯 ${L('האתגר השבועי', 'Weekly challenge')}</h3><div class="row"><input type="text" id="chTag" value="${esc(d.challenge.tag || '')}" placeholder="${L('תגית (בלי #)', 'Tag (no #)')}" style="width:200px">
+        <input type="text" id="chText" value="${esc(d.challenge.text || '')}" placeholder="${L('תיאור האתגר', 'Challenge text')}" style="flex:1"></div>
+        <div class="row" style="margin-top:12px"><button class="btn pri" id="limSave">${t('save')}</button><span class="status" id="limMsg"></span></div>`;
+      $('#limSave').onclick = async () => { const lim = {}; $$('[data-lim]').forEach(i => lim[i.dataset.lim] = +i.value);
+        await api('/admin/limits', { method: 'POST', admin: k, body: { limits: lim, challenge: { tag: $('#chTag').value, text: $('#chText').value } } }); $('#limMsg').textContent = '✅'; };
     } else if (ADM.tab === 'outbox') {
       const d = await api('/admin/outbox', { admin: k });
       body.innerHTML = `<div class="status ${d.configured ? 'ok' : 'err'}">${d.configured ? '✅ ' + L('שליחת מיילים מחוברת.', 'Email sending is connected.')

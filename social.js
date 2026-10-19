@@ -32,6 +32,7 @@ async function refreshLimits() {
     if (!(await ensureServer())) { box.textContent = ''; return; }
     const d = await api('/limits/me', { ms: 8000 });
     if (d.admin) { box.innerHTML = `👑 ${L('מנהל – בלי הגבלות', 'Admin – unlimited')}`; return; }
+    if (d.unlimited) { box.innerHTML = `⭐ ${L('החשבון שלך בלי הגבלות', 'Your account is unlimited')}`; return; }
     const left = d.songs_left;
     box.innerHTML = `🎵 ${L('נשארו לך היום', 'Songs left today')}: <b>${left}</b> ${L('מתוך', 'of')} ${d.songs_cap}` +
       (d.logged_in ? ` · 💾 ${L('שמורים בחשבון', 'Saved')}: ${d.lib_used}/${d.limits.lib_max}`

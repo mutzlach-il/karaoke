@@ -163,7 +163,7 @@ function renderContact() {
     <label for="cEmail">${L('מייל לחזרה', 'Your email')}</label><input type="email" id="cEmail" dir="ltr" value="${esc(u?.email || '')}">
     <label for="cText">${L('ההודעה', 'Message')}</label><textarea id="cText" rows="6"></textarea>
     <div class="row" style="margin-top:12px"><button class="btn pri" id="cSend">${L('שליחה', 'Send')}</button>
-      <a class="btn link" href="mailto:bnyytmrkwt@gmail.com">${L('או שלחו מייל ישיר', 'or email us directly')}</a></div>
+      <a class="btn link" href="mailto:myelin41375@gmail.com">${L('או שלחו מייל ישיר', 'or email us directly')}</a></div>
     <div class="status" id="cMsg"></div>`;
   $('#cSend').onclick = async e => {
     const m = $('#cMsg'), b = e.target; const text = $('#cText').value.trim();
@@ -175,7 +175,7 @@ function renderContact() {
       m.textContent = '✅ ' + L('ההודעה נשלחה! נחזור אליכם בהקדם.', 'Message sent! We will get back to you soon.'); m.className = 'status ok'; $('#cText').value = ''; track('contact');
     } catch (er) {
       if (er.message === 'offline') {   // אין שרת – פותחים מייל רגיל
-        location.href = `mailto:bnyytmrkwt@gmail.com?subject=${encodeURIComponent(t('appName'))}&body=${encodeURIComponent(text)}`;
+        location.href = `mailto:myelin41375@gmail.com?subject=${encodeURIComponent(t('appName'))}&body=${encodeURIComponent(text)}`;
         m.textContent = ''; } else { m.textContent = '❌ ' + er.message; m.className = 'status err'; }
     } finally { b.disabled = false; }
   };

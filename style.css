@@ -310,3 +310,11 @@ body.remote-mode header .tabs,body.remote-mode footer{display:none}
 }
 body.stage-mode .modal{z-index:100} body.stage-mode .toast{z-index:150}
 .stnext .tchip,.stnext .ava{align-self:flex-start}
+#accBox label,#contactBox label{display:block;margin:12px 0 5px;font-weight:600}
+#accBox .seg{display:flex;width:fit-content;margin-bottom:6px}
+nav.tabs button.backbtn{color:var(--text);font-weight:700;background:var(--card);box-shadow:0 0 0 1px var(--line)}
+.guide h3{margin-top:26px;padding-top:6px;border-top:1px solid var(--line);scroll-margin-top:80px}
+.guide ul{padding-inline-start:22px;line-height:1.75}.guide li{margin:4px 0}
+.gtoc{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.gtoc a{padding:7px 12px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);color:var(--text);text-decoration:none;font-size:14px}
+.gtoc a:hover{border-color:var(--brand)}

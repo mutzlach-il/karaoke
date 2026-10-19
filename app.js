@@ -30,11 +30,13 @@ $('#langSel').onchange = e => { LANG = e.target.value; store.set('lang', LANG); 
 
 const NTFY_TOPIC = 'keter-karaoke-mutzlach-7d3f9a';
 let AUTO_SERVER = store.get('autoServer', '');
-function server() { return (store.get('server', '') || AUTO_SERVER || DEFAULT_SERVER).replace(/\/+$/, ''); }
+// כתובת שרת ידנית נחשבת רק אם היא באמת כתובת (מתחילה ב-http)
+function manualServer() { const v = String(store.get('server', '') || '').trim(); return /^https?:\/\/\S+$/i.test(v) ? v : ''; }
+function server() { return (manualServer() || AUTO_SERVER || DEFAULT_SERVER).replace(/\/+$/, ''); }
 async function pingServer(u, ms = 4000) { try { const r = await fetchT(u.replace(/\/+$/, '') + '/', {}, ms); return r.ok; } catch { return false; } }
 // מוצא את השרת לבד: קודם המחשב הזה, ואחר כך הכתובת הציבורית האחרונה שהשרת פרסם
 async function discoverServer() {
-  if (store.get('server', '')) return server();
+  if (manualServer()) return server();
   const cands = ['http://127.0.0.1:7860'];
   try {
     const txt = await (await fetchT(`https://ntfy.sh/${NTFY_TOPIC}/json?poll=1&since=24h`, {}, 8000)).text();
@@ -1042,7 +1044,7 @@ async function renderSettings() {
 }
 $('#serverUrl').onchange = e => { store.set('server', e.target.value.trim()); };
 $('#serverTest').onclick = async () => {
-  store.set('server', $('#serverUrl').value.trim()); if (!store.get('server', '')) await discoverServer();
+  store.set('server', $('#serverUrl').value.trim()); if (!manualServer()) await discoverServer();
   const st = $('#serverStatus'); st.textContent = t('checking'); st.className = 'status';
   try { const r = await fetchT(server() + '/', {}, 60000); const d = await r.json(); st.textContent = '✅ ' + t('serverOk', { q: d.queue ?? 0 }); st.className = 'status ok'; }
   catch { st.textContent = '❌ ' + t('noServer'); st.className = 'status err'; }

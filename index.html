@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>אולפן הקריוקי שלי</title>
-<meta name="description" content="אולפן קריוקי בעברית, אנגלית ואידיש: מעלים שיר או מדביקים קישור מיוטיוב, ומקבלים פלייבק, שירה ומילים מתוזמנות. הקלטה, אפקטים וציון לשירה.">
+<meta name="description" content="אולפן קריוקי בעברית ובאנגלית: מעלים שיר או מדביקים קישור מיוטיוב, ומקבלים פלייבק, שירה ומילים מתוזמנות. הקלטה, אפקטים וציון לשירה.">
 <meta name="theme-color" content="#8b5cf6">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -58,6 +58,8 @@
     <a class="mcard" href="#party"><span class="mi">🎉</span><b data-i18n="tabParty">מצב שמחה</b><span data-i18n="mParty">תור זמרים לאירוע – כל אחד בתורו במסך מלא</span></a>
     <a class="mcard" href="#practice"><span class="mi">🎯</span><b data-i18n="tabPractice">תרגול</b><span data-i18n="mPractice">חימום קולי, מד גובה צליל ומטרונום</span></a>
     <a class="mcard" href="#guide"><span class="mi">📖</span><b data-i18n="tabGuide">מדריך</b><span data-i18n="mGuide">הסבר צעד אחר צעד איך משתמשים</span></a>
+    <a class="mcard" href="#account"><span class="mi">👤</span><b data-i18n="accTitle">החשבון שלי</b><span data-i18n="mAccount">הרשמה וכניסה – השירים שלך בכל מחשב</span></a>
+    <a class="mcard" href="#contact"><span class="mi">✉️</span><b data-i18n="contact">צור קשר</b><span data-i18n="mContact">שאלה, רעיון או בעיה? כתבו לנו</span></a>
     <a class="mcard" href="#settings"><span class="mi">⚙️</span><b data-i18n="tabSettings">הגדרות</b><span data-i18n="mSettings">שרת, שמירה במחשב, יצירת קשר ומנהל</span></a>
   </div>
 </section>
@@ -99,6 +101,7 @@
         <button class="btn sm" id="saveBtn" data-i18n="saveToLib">שמור בתיקייה</button>
         <button class="btn sm" id="shareBtn" data-i18n="share">שתף קישור</button>
         <button class="btn sm" id="zipBtn" data-i18n="downloadAll">הורד הכל (ZIP)</button>
+        <button class="btn sm" id="sharePerfBtn" data-i18n="sharePerf">🔗 שתף את הביצוע שלי</button>
       </div>
       <div class="muted" id="songMeta" style="margin:6px 0 10px"></div>
       <canvas class="wave" id="wave" height="90"></canvas>
@@ -112,8 +115,14 @@
           <button id="srcKaraoke" class="on" data-i18n="karaoke">קריוקי</button>
           <button id="srcOriginal" data-i18n="original">מקורי</button>
         </div>
+        <button class="btn" id="guideBtn" data-i18n="guideMode" title="">🎧 מצב מדריך</button>
         <label class="chk"><input type="checkbox" id="countdownChk" checked> <span data-i18n="countdown">ספירה לאחור</span></label>
         <button class="btn" id="fsBtn" data-i18n="fullscreen">מסך מלא</button>
+      </div>
+      <div class="row" id="studioCrowd" style="margin:-4px 0 12px">
+        <span class="muted" data-i18n="crowdLbl">קהל:</span>
+        <button class="btn sm" data-cr="clap">👏</button><button class="btn sm" data-cr="cheer">🎉</button><button class="btn sm" data-cr="wow">😮</button>
+        <button class="btn sm" data-cr="drum">🥁</button><button class="btn sm" data-cr="horn">📯</button><button class="btn sm" data-cr="laugh">😂</button>
       </div>
 
       <div class="grid2">
@@ -183,9 +192,22 @@
           <option value="" data-i18n="noTranslate">בלי תרגום</option>
           <option value="he">→ עברית</option><option value="en">→ English</option>
         </select>
+        <select id="aniBgSel" style="width:auto">
+          <option value="" data-i18n="aniNone">בלי רקע מונפש</option>
+          <option value="space" data-i18n="aniSpace">🌌 חלל</option>
+          <option value="sea" data-i18n="aniSea">🌊 ים</option>
+          <option value="fireworks" data-i18n="aniFire">🎆 זיקוקים</option>
+          <option value="disco" data-i18n="aniDisco">🪩 דיסקו</option>
+        </select>
+        <label class="chk"><input type="checkbox" id="lightsChk"> <span data-i18n="lights">💡 אורות מסיבה</span></label>
         <label class="chk"><input type="checkbox" id="duetChk"> <span data-i18n="duet">דואט</span></label>
         <button class="btn sm" id="lrcBtn" data-i18n="downloadLrc">הורד LRC</button>
         <button class="btn sm" id="printBtn" data-i18n="print">הדפס</button>
+      </div>
+      <div id="duetNames" class="row hidden" style="margin-top:8px">
+        <span class="duetdot" style="background:var(--a)"></span><input type="text" id="duetA" data-i18n-ph="duetA" placeholder="שם זמר/ת A" style="flex:1">
+        <span class="duetdot" style="background:var(--b)"></span><input type="text" id="duetB" data-i18n-ph="duetB" placeholder="שם זמר/ת B" style="flex:1">
+        <span class="muted" data-i18n="duetHint2">בעריכת המילים: A: / B: / יחד: בתחילת שורה</span>
       </div>
       <div id="lyrEditor" class="hidden" style="margin-top:10px">
         <textarea id="lyrText" data-i18n-ph="lyricsPh" placeholder="שורה בכל שורה…"></textarea>
@@ -227,6 +249,16 @@
           <input type="range" id="bassBoost" min="0" max="12" value="0">
           <div class="kv"><span data-i18n="voiceVol">עוצמת הקול שלי</span><span id="voiceLbl">100%</span></div>
           <input type="range" id="voiceVol" min="0" max="200" value="100">
+          <div class="kv"><span data-i18n="voiceFx">אפקט קול מצחיק</span></div>
+          <select id="voiceFx">
+            <option value="none" data-i18n="fxNone">בלי</option>
+            <option value="robot" data-i18n="fxRobot">🤖 רובוט</option>
+            <option value="helium" data-i18n="fxHelium">🎈 הליום (קול דק)</option>
+            <option value="deep" data-i18n="fxDeep">🐻 קול עמוק</option>
+            <option value="hall" data-i18n="fxHall">🏛 אולם גדול</option>
+            <option value="phone" data-i18n="fxPhone">📞 טלפון ישן</option>
+          </select>
+          <label class="chk"><input type="checkbox" id="pitchFix"> <span data-i18n="pitchFix">✨ תיקון זיופים עדין</span></label>
         </div>
         <div class="ch">
           <b data-i18n="exportMix">ייצוא</b>
@@ -278,22 +310,9 @@
   </div>
 </section>
 
-<!-- =================== מצב שמחה =================== -->
+<!-- =================== ערב קריוקי =================== -->
 <section id="view-party" class="hidden">
-  <div class="card">
-    <h2 data-i18n="partyTitle">מצב שמחה – תור זמרים</h2>
-    <div class="muted" data-i18n="partyHint">כל אורח בוחר שיר מהתיקייה ונכנס לתור. לוחצים "הבא" והשיר עולה במסך מלא.</div>
-    <div class="row" style="margin-top:12px">
-      <input type="text" id="singerName" data-i18n-ph="singerName" placeholder="שם הזמר" style="flex:1;min-width:140px">
-      <select id="partySong" style="flex:2;min-width:180px"></select>
-      <button class="btn pri" id="partyAdd" data-i18n="addToQueue">הוסף לתור</button>
-    </div>
-    <div class="list" id="partyQueue" style="margin-top:12px"></div>
-    <div class="row" style="margin-top:12px">
-      <button class="btn pri" id="partyNext" data-i18n="nextSinger">▶ הזמר הבא</button>
-      <button class="btn" id="partyClear" data-i18n="clearQueue">נקה תור</button>
-    </div>
-  </div>
+  <div id="partyApp"></div>
 </section>
 
 <!-- =================== תרגול =================== -->
@@ -331,24 +350,34 @@
     <div class="muted" data-i18n="offlineHint">שירים שסימנת "שמור בתיקייה" נשמרים גם בלי אינטרנט.</div>
     <div class="row" style="margin-top:8px"><span id="storageLbl" class="pill"></span><button class="btn sm" id="clearStore" data-i18n="clearAll">מחק הכל</button></div>
     <hr style="border-color:var(--line);margin:18px 0">
-    <h3 data-i18n="contact">צור קשר</h3>
-    <a class="btn" id="contactBtn" href="mailto:bnyytmrkwt@gmail.com?subject=%D7%90%D7%95%D7%9C%D7%A4%D7%9F%20%D7%94%D7%A7%D7%A8%D7%99%D7%95%D7%A7%D7%99" data-i18n="sendEmail">✉ שלח מייל</a>
-  </div>
-  <div class="card">
-    <h2 data-i18n="admin">לוח מנהל</h2>
-    <div class="row"><input type="password" id="adminKey" data-i18n-ph="adminPass" placeholder="סיסמת מנהל" style="flex:1"><button class="btn" id="adminGo" data-i18n="enter">כניסה</button></div>
-    <div id="adminBox" style="margin-top:12px"></div>
+    <div class="row"><a class="btn" href="#contact" data-i18n="contactBtn">✉ צור קשר</a><a class="btn" href="#account" data-i18n="accBtn">👤 החשבון שלי</a><a class="btn" href="#admin" data-i18n="adminBtn">🛠 לוח מנהל</a></div>
   </div>
 </section>
+
+<!-- =================== חשבון =================== -->
+<section id="view-account" class="hidden"><div class="card narrow" id="accBox"></div></section>
+<!-- =================== צור קשר =================== -->
+<section id="view-contact" class="hidden"><div class="card narrow" id="contactBox"></div></section>
+<!-- =================== לוח מנהל =================== -->
+<section id="view-admin" class="hidden"><div class="card" id="adminPanel"></div></section>
+<!-- =================== שלט בטלפון =================== -->
+<section id="view-remote" class="hidden"><div id="remoteBox" class="remote"></div></section>
+<!-- =================== ביצוע ששותף =================== -->
+<section id="view-perf" class="hidden"><div id="perfBox"></div></section>
 </main>
 
 <div id="printArea" class="hidden printable"></div>
-<footer class="noprint"><a href="#settings" data-i18n="contact">צור קשר</a></footer>
+<footer class="noprint"><a href="#contact" data-i18n="contact">צור קשר</a> · <a href="#account" data-i18n="accTitle">החשבון שלי</a>
+  <div class="muted small" data-i18n="privacyNote">האתר סופר כניסות באופן אנונימי כדי לשפר את השירות.</div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script src="i18n.js"></script>
 <script src="app.js"></script>
+<script src="fx.js"></script>
+<script src="account.js"></script>
+<script src="party.js"></script>
 </body>
 </html>

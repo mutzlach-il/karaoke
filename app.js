@@ -1,4 +1,4 @@
-/* אולפן הקריוקי – כתר טכנולוגיות */
+/* אולפן הקריוקי שלי */
 'use strict';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -207,7 +207,7 @@ async function poll(id) {
     else if (j.status === 'running') setJob(j.progress, `${stage}… ${j.progress}%`);
     else if (j.status === 'error') { setJob(0, '❌ ' + j.error, 'err'); return; }
     else if (j.status === 'done') {
-      setJob(100, '✅ ' + t('stReady'), 'ok');
+      setJob(100, '✅ ' + t('stReady'), 'ok'); window.track && track('song');
       await openSong(songFromJob(j));
       return;
     }
@@ -543,26 +543,30 @@ function lineText(l) { return l.words?.length ? l.words.map(w => w.w).join(' ') 
 function renderLyrics(force) {
   const box = $('#lyrics'); if (!song) return;
   const lines = lyricLines();
-  if (!lines.length) { if (force) box.innerHTML = `<div class="ln muted">${t('noLyrics')}</div>`; lastLine = -2; return; }
+  const keepEls = () => [...box.querySelectorAll(':scope > .keep')];
+  const setHTML = html => { const k = keepEls(), cd = box.querySelector(':scope > .count'); box.innerHTML = html; k.forEach(e => box.prepend(e)); if (cd) box.appendChild(cd); };
+  if (!lines.length) { if (force) setHTML(`<div class="ln muted">${t('noLyrics')}</div>`); lastLine = -2; return; }
   const tm = curTime();
   let cur = -1; for (let i = 0; i < lines.length; i++) if (lines[i].s != null && lines[i].s <= tm + 0.05) cur = i;
   const timed = lines.some(l => l.s != null);
   if (!timed) {
-    if (force || lastLine !== -3) { box.innerHTML = lines.map(l => `<div class="ln cur" style="font-size:calc(var(--lyric)*.6)">${esc(lineText(l))}</div>`).join(''); lastLine = -3; box.style.overflowY = 'auto'; }
+    if (force || lastLine !== -3) { const duet = $('#duetChk').checked, dn = store.get('duetNames', { A: '', B: '' });
+      const who = sg => sg === 'AB' ? [dn.A || 'A', dn.B || 'B'].join(' + ') : (dn[sg] || sg);
+      setHTML(lines.map(l => `<div class="ln cur ${duet && l.singer ? l.singer : ''}" style="font-size:calc(var(--lyric)*.6)">${duet && l.singer ? `<span class="who">${esc(who(l.singer))}</span>` : ''}${esc(lineText(l))}</div>`).join('')); lastLine = -3; box.style.overflowY = 'auto'; }
     return;
   }
   box.style.overflowY = 'hidden';
   if (force || cur !== lastLine) {
     const from = Math.max(0, cur - 1), to = Math.min(lines.length, from + 5);
-    const duet = $('#duetChk').checked;
+    const duet = $('#duetChk').checked; const dn = store.get('duetNames', { A: '', B: '' });
+    const who = sg => sg === 'AB' ? [dn.A || 'A', dn.B || 'B'].join(' + ') : (dn[sg] || sg);
     let html = '';
     for (let i = from; i < to; i++) {
       const l = lines[i]; const cls = ['ln']; if (i === cur) cls.push('cur'); if (duet && l.singer) cls.push(l.singer);
       const words = l.words?.length ? l.words : [{ w: l.text || '', s: l.s, e: l.e }];
-      html += `<div class="${cls.join(' ')}" data-i="${i}">${words.map((w, k) => `<span class="w" data-k="${k}">${esc(w.w)}</span>`).join(' ')}${l.tr ? `<span class="tr">${esc(l.tr)}</span>` : ''}</div>`;
+      html += `<div class="${cls.join(' ')}" data-i="${i}">${duet && l.singer ? `<span class="who">${esc(who(l.singer))}</span>` : ''}${words.map((w, k) => `<span class="w" data-k="${k}">${esc(w.w)}</span>`).join(' ')}${l.tr ? `<span class="tr">${esc(l.tr)}</span>` : ''}</div>`;
     }
-    const cd = box.querySelector('.count');
-    box.innerHTML = html; if (cd) box.appendChild(cd);
+    setHTML(html);
     lastLine = cur;
   }
   // צביעת מילה-מילה
@@ -601,7 +605,7 @@ $('#editLyrBtn').onclick = () => {
 $('#lyrSave').onclick = () => {
   const old = lyricLines();
   const lines = $('#lyrText').value.split('\n').map(s => s.trim()).filter(Boolean).map((txt, i) => {
-    let singer = null; const m = txt.match(/^([AB])\s*:\s*(.*)$/); if (m) { singer = m[1]; txt = m[2]; }
+    let singer = null; const m = txt.match(/^(AB|A\+B|A|B|יחד|ביחד)\s*:\s*(.*)$/i); if (m) { const k = m[1].toUpperCase(); singer = k === 'A' || k === 'B' ? k : 'AB'; txt = m[2]; }
     const prev = old[i];
     const same = prev && lineText(prev) === txt;
     return same ? Object.assign({}, prev, { singer }) : { text: txt, s: prev?.s ?? null, e: prev?.e ?? null, singer, words: null };
@@ -723,7 +727,7 @@ async function startRec() {
   if ($('#countdownChk').checked) await countdown();
   REC.start = curTime();
   REC.rec.start(250); REC.camRec && REC.camRec.start(250);
-  REC.active = true; setRecBtn();
+  REC.active = true; setRecBtn(); window.track && track('record');
   if (!P.playing) await playAll(false);
 }
 function stopRec() {
@@ -816,7 +820,9 @@ async function renderMix() {
       shelf.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(g); g.connect(bus); }
     for (const x of takes) {
       const bl = await takeBlob(x.id); if (!bl) continue;
-      const buf = await off.decodeAudioData(await bl.arrayBuffer());
+      let buf = await off.decodeAudioData(await bl.arrayBuffer());
+      const fxk = $('#voiceFx')?.value || 'none', fix = !!$('#pitchFix')?.checked;
+      if (fxk !== 'none' || fix) buf = await voiceEffect(buf, fxk, fix);
       const src = off.createBufferSource(); src.buffer = buf; src.connect(voice);
       const when = x.offset - t0; if (when >= 0) src.start(when); else src.start(0, -when);
     }
@@ -853,7 +859,7 @@ async function exportAudio(kind) {
   if (!song) return;
   toast(t('rendering'), 6000);
   try { const buf = await renderMix(); const blob = kind === 'wav' ? toWav(buf) : await toMp3(buf);
-    download(blob, `${safeName(song.title)} - ${t('myVersion')}.${kind === 'wav' ? 'wav' : 'mp3'}`); return blob; }
+    download(blob, `${safeName(song.title)} - ${t('myVersion')}.${kind === 'wav' ? 'wav' : 'mp3'}`); window.track && track('export'); return blob; }
   catch (e) { console.error(e); toast('❌ ' + t('exportFail'), 5000); }
 }
 $('#expMp3').onclick = () => exportAudio('mp3');
@@ -1015,8 +1021,9 @@ $('#newPl').onclick = async () => { const n = await ask(t('plName')); if (!n) re
 async function renderPlaylists() {
   const pls = await DB.all('playlists');
   $('#plList').innerHTML = pls.length ? pls.map(p => `<div class="item"><span class="t grow">📃 ${esc(p.name)}</span><span class="muted">${p.songs.length} ${t('songs')}</span>
-    <button class="btn sm" data-plplay="${p.id}">▶ ${t('playAll')}</button><button class="btn sm" data-pldel="${p.id}">🗑</button></div>`).join('') : `<div class="muted">${t('noPlaylists')}</div>`;
+    <button class="btn sm" data-plplay="${p.id}">▶ ${t('playAll')}</button><button class="btn sm" data-plshare="${p.id}" title="share">👥 ${LANG === 'en' ? 'Share' : 'שתף'}</button><button class="btn sm" data-pldel="${p.id}">🗑</button></div>`).join('') : `<div class="muted">${t('noPlaylists')}</div>`;
   $$('[data-plplay]').forEach(b => b.onclick = () => PL.start(pls.find(p => p.id === b.dataset.plplay)));
+  $$('[data-plshare]').forEach(b => b.onclick = () => sharePlaylist(pls.find(p => p.id === b.dataset.plshare)));
   $$('[data-pldel]').forEach(b => b.onclick = async () => { await DB.del('playlists', b.dataset.pldel); renderPlaylists(); });
 }
 const PL = { active: false, list: [], i: 0,
@@ -1024,26 +1031,8 @@ const PL = { active: false, list: [], i: 0,
   async play() { const s = await DB.get('songs', this.list[this.i]); if (!s) return this.next(); await openSong(s); playAll(true); },
   next() { if (++this.i < this.list.length) this.play(); else { this.active = false; toast(t('plDone')); } } };
 
-/* ===================== מצב שמחה (47) ===================== */
-async function renderParty() {
-  const songs = await DB.all('songs');
-  $('#partySong').innerHTML = songs.length ? songs.map(s => `<option value="${s.id}">${esc(s.title)}</option>`).join('') : `<option value="">${t('libEmpty')}</option>`;
-  const q = store.get('party', []);
-  $('#partyQueue').innerHTML = q.length ? q.map((x, i) => `<div class="item"><span class="pill">${i + 1}</span><span class="t grow">${esc(x.name)} – ${esc(x.title)}</span><button class="btn sm" data-prm="${i}">✕</button></div>`).join('') : `<div class="muted">${t('queueEmpty')}</div>`;
-  $$('[data-prm]').forEach(b => b.onclick = () => { q.splice(b.dataset.prm, 1); store.set('party', q); renderParty(); });
-}
-$('#partyAdd').onclick = async () => {
-  const id = $('#partySong').value; if (!id) return; const s = await DB.get('songs', id);
-  const q = store.get('party', []); q.push({ id, title: s.title, name: $('#singerName').value.trim() || t('guest') });
-  store.set('party', q); $('#singerName').value = ''; renderParty();
-};
-$('#partyNext').onclick = async () => {
-  const q = store.get('party', []); if (!q.length) { toast(t('queueEmpty')); return; }
-  const x = q.shift(); store.set('party', q); const s = await DB.get('songs', x.id); if (!s) return;
-  location.hash = 'studio'; await openSong(s); toast('🎤 ' + x.name, 4000);
-  $('#lyrics').requestFullscreen?.().catch(() => {}); playAll(true);
-};
-$('#partyClear').onclick = () => { store.set('party', []); renderParty(); };
+/* ===================== ערב קריוקי – ראו party.js ===================== */
+async function renderParty() {}
 
 /* ===================== חימום קולי (53) ===================== */
 const WARMUPS = [
@@ -1088,24 +1077,6 @@ $('#serverTest').onclick = async () => {
   catch { st.textContent = '❌ ' + t('noServer'); st.className = 'status err'; }
 };
 $('#clearStore').onclick = async () => { if (!confirm(t('confirmClearAll'))) return; await DB.clear('songs'); await DB.clear('blobs'); await DB.clear('playlists'); renderSettings(); toast(t('cleared')); };
-$('#adminGo').onclick = async () => {
-  const key = $('#adminKey').value; const box = $('#adminBox'); box.textContent = t('checking');
-  try {
-    const r = await fetchT(server() + '/admin/stats', { headers: { 'X-Admin-Key': key } }, 30000);
-    if (!r.ok) throw new Error(await apiError(r));
-    const d = await r.json(); const maxH = Math.max(1, ...Object.values(d.hourly));
-    box.innerHTML = `<div class="grid2">
-      <div class="ch"><div class="kv"><span>${t('adDone')}</span><b>${d.done}</b></div><div class="kv"><span>${t('adFailed')}</span><b>${d.failed}</b></div>
-      <div class="kv"><span>${t('adYoutube')}</span><b>${d.youtube}</b></div><div class="kv"><span>${t('adUpload')}</span><b>${d.upload}</b></div></div>
-      <div class="ch"><div class="kv"><span>${t('adUsers')}</span><b>${d.users_today}</b></div><div class="kv"><span>${t('adAvg')}</span><b>${d.avg_seconds}s</b></div>
-      <div class="kv"><span>${t('adQueue')}</span><b>${d.queue}</b></div><div class="kv"><span>${t('adDisk')}</span><b>${d.disk_mb}MB</b></div>
-      <div class="kv"><span>${t('adUptime')}</span><b>${d.uptime_hours}h</b></div></div></div>
-      <h3>${t('adHours')}</h3><div class="bars">${[...Array(24)].map((_, h) => `<div title="${h}:00 – ${d.hourly[h] || 0}" style="height:${(d.hourly[h] || 0) / maxH * 100}%"></div>`).join('')}</div>
-      <h3>${t('adJobs')}</h3><table><tr><th>${t('song')}</th><th>${t('status')}</th><th>${t('time')}</th></tr>
-      ${d.jobs.map(j => `<tr><td>${esc(j.title)}</td><td>${esc(j.status)}${j.error ? ' – ' + esc(j.error) : ''}</td><td>${new Date(j.created * 1000).toLocaleString()}</td></tr>`).join('')}</table>
-      <h3>${t('adErrors')}</h3><table>${d.errors.map(e => `<tr><td>${esc(e.time)}</td><td>${esc(e.where)}</td><td>${esc(e.msg)}</td></tr>`).join('') || `<tr><td>${t('none')}</td></tr>`}</table>`;
-  } catch (e) { box.textContent = '❌ ' + e.message; }
-};
 
 /* ===================== מדריך והדרכה ראשונה (42) ===================== */
 function renderGuide() { const g = $('#guideBox'); if (g) g.innerHTML = t('guideHtml'); }

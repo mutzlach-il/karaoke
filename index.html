@@ -57,7 +57,6 @@
     <a class="mcard" href="#studio"><span class="mi">🎙️</span><b data-i18n="tabStudio">אולפן</b><span data-i18n="mStudio">מעלים שיר, מפרידים, שרים ומקליטים</span></a>
     <a class="mcard" href="#library"><span class="mi">🎵</span><b data-i18n="tabLibrary">השירים שלי</b><span data-i18n="mLibrary">כל השירים ששמרת, מועדפים ורשימות השמעה</span></a>
     <a class="mcard" href="#party"><span class="mi">🎉</span><b data-i18n="tabParty">מצב שמחה</b><span data-i18n="mParty">תור זמרים לאירוע – כל אחד בתורו במסך מלא</span></a>
-    <a class="mcard" href="#practice"><span class="mi">🎯</span><b data-i18n="tabPractice">תרגול</b><span data-i18n="mPractice">חימום קולי, מד גובה צליל ומטרונום</span></a>
     <a class="mcard" href="#guide"><span class="mi">📖</span><b data-i18n="tabGuide">מדריך</b><span data-i18n="mGuide">הסבר צעד אחר צעד איך משתמשים</span></a>
     <a class="mcard" href="#account"><span class="mi">👤</span><b data-i18n="accTitle">החשבון שלי</b><span data-i18n="mAccount">הרשמה וכניסה – השירים שלך בכל מחשב</span></a>
     <a class="mcard" href="#contact"><span class="mi">✉️</span><b data-i18n="contact">צור קשר</b><span data-i18n="mContact">שאלה, רעיון או בעיה? כתבו לנו</span></a>
@@ -314,24 +313,6 @@
 <!-- =================== ערב קריוקי =================== -->
 <section id="view-party" class="hidden">
   <div id="partyApp"></div>
-</section>
-
-<!-- =================== תרגול =================== -->
-<section id="view-practice" class="hidden">
-  <div class="card">
-    <h2 data-i18n="warmups">חימום קולי</h2>
-    <div class="muted" data-i18n="warmupHint">לחץ על תרגיל, האזן, ושיר אחריו. מד הגובה מראה אם אתה מדויק.</div>
-    <div class="row" style="margin-top:10px" id="warmupBtns"></div>
-    <div class="pitchbar" style="margin-top:10px"><canvas id="warmCanvas" width="800" height="70"></canvas></div>
-    <div class="row" style="margin-top:8px"><button class="btn" id="warmMic" data-i18n="micOn">הפעל מיקרופון</button><span id="warmNote" class="pill">—</span></div>
-  </div>
-  <div class="card">
-    <h2 data-i18n="metronome">מטרונום</h2>
-    <div class="row">
-      <input type="number" id="metroBpm" value="90" min="30" max="240" style="width:100px">
-      <button class="btn" id="metroToggle" data-i18n="startStop">הפעל / עצור</button>
-    </div>
-  </div>
 </section>
 
 <!-- =================== מדריך =================== -->

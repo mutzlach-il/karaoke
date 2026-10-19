@@ -68,7 +68,7 @@ he: {
   skip: 'דלג', next: 'הבא', letsGo: 'יאללה!',
   guideHtml: `<h2>📖 מדריך שימוש מלא</h2>
 <p class="muted">כל מה שיש באתר, עמוד אחרי עמוד. לחצו על נושא כדי לקפוץ אליו.</p>
-<nav class="gtoc"><a href="#g-start">🚀 לפני הכל</a><a href="#g-home">🏠 תפריט ראשי</a><a href="#g-studio">🎙️ אולפן</a><a href="#g-lyrics">📝 מילים</a><a href="#g-rec">⏺ הקלטה ואפקטים</a><a href="#g-export">⬇ ייצוא ושיתוף</a><a href="#g-lib">🎵 השירים שלי</a><a href="#g-party">🎉 ערב קריוקי</a><a href="#g-phone">📱 הטלפון כשלט</a><a href="#g-acc">👤 חשבון</a><a href="#g-contact">✉️ צור קשר</a><a href="#g-settings">⚙️ הגדרות</a><a href="#g-admin">🛠 לוח מנהל</a><a href="#g-keys">⌨️ קיצורים</a></nav>
+<nav class="gtoc"><a href="#g-start">🚀 לפני הכל</a><a href="#g-home">🏠 תפריט ראשי</a><a href="#g-comm">🌟 קהילה</a><a href="#g-limits">🎟 מכסות</a><a href="#g-studio">🎙️ אולפן</a><a href="#g-lyrics">📝 מילים</a><a href="#g-rec">⏺ הקלטה ואפקטים</a><a href="#g-export">⬇ ייצוא ושיתוף</a><a href="#g-lib">🎵 השירים שלי</a><a href="#g-party">🎉 ערב קריוקי</a><a href="#g-phone">📱 הטלפון כשלט</a><a href="#g-acc">👤 חשבון</a><a href="#g-contact">✉️ צור קשר</a><a href="#g-settings">⚙️ הגדרות</a><a href="#g-admin">🛠 לוח מנהל</a><a href="#g-keys">⌨️ קיצורים</a></nav>
 
 <h3 id="g-start">🚀 לפני הכל – השרת</h3>
 <p>הפרדת שירים, חשבונות, ערב קריוקי עם טלפונים, שיתוף בקישור ולוח המנהל עובדים דרך השרת שרץ על המחשב שלך. כשהשרת דולק – האתר מוצא אותו לבד. בלי השרת אפשר עדיין לנגן שירים ששמרת במחשב, לתרגל ולהשתמש בחלק מהכלים.</p>
@@ -77,6 +77,21 @@ he: {
 <ul><li>מסך הפתיחה – לוחצים <b>"מתחילים"</b> ומגיעים לתפריט עם כל העמודים.</li>
 <li>בראש כל עמוד יש כפתור <b>"→ חזרה"</b> לעמוד הקודם, וכפתור <b>"🏠 תפריט ראשי"</b>.</li>
 <li>למעלה: בחירת שפה (עברית / English), מצב כהה/בהיר (☀️/🌙), וכפתור <b>👤</b> לכניסה לחשבון.</li></ul>
+
+<h3 id="g-comm">🌟 קהילה – הרשת החברתית של הקריוקי</h3>
+<ul><li><b>פיד:</b> גוללים קליפים של זמרים. לשוניות: <b>✨ בשבילך</b> (הכי אהובים), <b>👥 עוקב</b> (רק מי שאתם עוקבים אחריו), <b>🆕 חדש</b>, <b>⭐ השבוע</b> (זמרי השבוע, תגיות חמות והאתגר השבועי).</li>
+<li><b>סטורי:</b> העיגולים למעלה – קליפים קצרים שנעלמים אחרי 24 שעות. לוחצים על עיגול כדי לצפות, "הסטורי שלי" כדי להעלות.</li>
+<li><b>🎬 קליפ חדש (מצלמת קריוקי):</b> בוחרים שיר, מאיזו שנייה להתחיל (או "מהפזמון"), מצב <b>🎥 וידאו</b> או <b>🎵 רק קול</b> (עם רקע מונפש ובלי פנים), וקליפ או סטורי. לוחצים "התחל לצלם" – ספירה לאחור, השיר מתנגן והמילים על המסך. עד 60 שניות. אחר כך כותבים כיתוב (אפשר #תגית), בוחרים מי רואה (כולם / רק העוקבים) ומפרסמים.</li>
+<li><b>על כל קליפ:</b> ❤️ לייק, 💬 תגובות, 🎤 <b>דואט</b> (מצלמים את עצמכם לצד הקליפ), 🔗 שיתוף בקישור, ⋯ דיווח או מחיקה (של קליפ שלכם).</li>
+<li><b>פרופיל:</b> תמונה (לוחצים עליה כדי להחליף), שם, כמה מילים עליכם, עוקבים, וכל הקליפים. אצל אחרים – כפתור <b>+ עקוב</b>.</li>
+<li><b>🎁 הזמנת חברים:</b> בפרופיל שלכם יש קישור הזמנה. כל חבר שנרשם דרכו = עוד שיר ביום.</li>
+<li><b>🔔 התראות:</b> מי עקב אחריכם, אהב, הגיב או עשה דואט.</li>
+<li><b>מערב קריוקי:</b> בעמוד ערב קריוקי – "🎬 צלם קליפ מהערב". הקליפים נאספים ל<b>עמוד הערב</b> (גם האורחים בטלפון רואים קישור אליו).</li>
+<li><b>שמירה על הסדר:</b> תוכן לא ראוי מדווחים ב-⋯, והמנהל מסתיר או מוחק.</li></ul>
+<h3 id="g-limits">🎟 מכסות שימוש</h3>
+<ul><li>אורח (בלי הרשמה): שיר חדש אחד ביום. משתמש רשום: 2 שירים ביום (ועוד שיר לכל חבר שהזמנתם).</li>
+<li>עד 10 שירים שמורים בחשבון, ערב קריוקי עם טלפונים פעם בשבוע, ועד 3 קליפים וסטורי ביום.</li>
+<li>שיר שמישהו כבר הפריד – לא יורד מהמכסה. המכסה מתחדשת כל יום בחצות. באולפן רואים כמה נשאר.</li></ul>
 
 <h3 id="g-studio">🎙️ אולפן – הבאת שיר ונגינה</h3>
 <ul><li><b>הבאת שיר:</b> גוררים קובץ (MP3, WAV, M4A וכו') לכל מקום בעמוד, או "בחר קובץ", או מדביקים קישור מיוטיוב ולוחצים "הבא מיוטיוב".</li>
@@ -245,9 +260,11 @@ en: {
   skip: 'Skip', next: 'Next', letsGo: "Let's go!",
   guideHtml: `<h2>📖 Complete guide</h2>
 <p class="muted">Everything on the site, page by page. Click a topic to jump to it.</p>
-<nav class="gtoc"><a href="#g-start">🚀 First</a><a href="#g-home">🏠 Menu</a><a href="#g-studio">🎙️ Studio</a><a href="#g-lyrics">📝 Lyrics</a><a href="#g-rec">⏺ Recording & effects</a><a href="#g-export">⬇ Export & share</a><a href="#g-lib">🎵 My songs</a><a href="#g-party">🎉 Karaoke night</a><a href="#g-phone">📱 Phone remote</a><a href="#g-acc">👤 Account</a><a href="#g-contact">✉️ Contact</a><a href="#g-settings">⚙️ Settings</a><a href="#g-admin">🛠 Admin</a><a href="#g-keys">⌨️ Shortcuts</a></nav>
+<nav class="gtoc"><a href="#g-start">🚀 First</a><a href="#g-home">🏠 Menu</a><a href="#g-comm">🌟 Community</a><a href="#g-limits">🎟 Limits</a><a href="#g-studio">🎙️ Studio</a><a href="#g-lyrics">📝 Lyrics</a><a href="#g-rec">⏺ Recording & effects</a><a href="#g-export">⬇ Export & share</a><a href="#g-lib">🎵 My songs</a><a href="#g-party">🎉 Karaoke night</a><a href="#g-phone">📱 Phone remote</a><a href="#g-acc">👤 Account</a><a href="#g-contact">✉️ Contact</a><a href="#g-settings">⚙️ Settings</a><a href="#g-admin">🛠 Admin</a><a href="#g-keys">⌨️ Shortcuts</a></nav>
 <h3 id="g-start">🚀 First – the server</h3><p>Song separation, accounts, phone remotes, share links and the admin panel run through the server on your computer. When it is on, the site finds it automatically. Without it you can still play saved songs and practice.</p>
 <h3 id="g-home">🏠 Menu & navigation</h3><ul><li>Press <b>"Get started"</b> on the welcome screen to reach the menu.</li><li>Every page has a <b>"← Back"</b> button and a <b>"🏠 Main menu"</b> button.</li><li>Top bar: language, dark/light mode, and <b>👤</b> for your account.</li></ul>
+<h3 id="g-comm">🌟 Community</h3><ul><li><b>Feed</b> tabs: For you, Following, New, This week (top singers, hot tags, weekly challenge).</li><li><b>Stories</b> disappear after 24 hours.</li><li><b>🎬 New clip</b>: pick a song and start point, video or voice-only (animated background), clip or story, up to 60s, caption with #tags, public or followers-only.</li><li>Like, comment, <b>duet</b>, share, report. Profiles with photo, bio and follow. Invite friends for bonus songs. Notifications. Clips from a karaoke night are collected on the event page.</li></ul>
+<h3 id="g-limits">🎟 Limits</h3><ul><li>Guest: 1 new song/day. Registered: 2/day (+1 per invited friend). 10 saved songs, 1 phone karaoke night per week, 3 clips/stories per day. Already-separated songs don't count.</li></ul>
 <h3 id="g-studio">🎙️ Studio</h3><ul><li>Drop a song file, choose a file, or paste a YouTube link. Choose 2 stems (vocals + backing) or 4 stems.</li><li>Separation takes about 1–4 minutes.</li><li>Play/stop/skip, click the waveform to jump. <b>Karaoke/Original</b>, <b>🎧 Guide mode</b> (original vocals quietly in the background).</li><li>Mixer with volume, mute and download per stem. <b>Key</b> and <b>Speed</b>, <b>A–B loop</b>, markers, countdown, metronome, fullscreen.</li><li><b>Crowd</b> buttons: applause, cheers, wow, drumroll, horn, laugh.</li><li><b>Save to my songs</b> keeps the song on your computer forever.</li></ul>
 <h3 id="g-lyrics">📝 Lyrics</h3><ul><li><b>Auto-transcribe</b>, <b>type/edit</b>, <b>tap to sync</b> (press Space at each line).</li><li><b>Duet:</b> start lines with A:, B: or AB:, tick "Duet" and type both names – each singer gets a color and a name tag.</li><li>Font size, backgrounds, <b>animated backgrounds</b> (space, sea, fireworks, disco) and <b>💡 party lights</b> to the beat.</li><li>Translate, download LRC, print.</li></ul>
 <h3 id="g-rec">⏺ Recording & effects</h3><ul><li>Press <b>"Start recording"</b> (headphones recommended), optional noise cleanup and camera. You get a <b>score</b>.</li><li>Takes: listen, delete, choose which go into the export.</li><li>Reverb, echo, bass boost, voice volume. <b>Fun voice effects:</b> robot, helium, deep, big hall, old phone. <b>✨ Gentle pitch correction.</b></li></ul>
@@ -265,6 +282,7 @@ en: {
 
 /* מחרוזות לתוספות: חשבון, ערב קריוקי, אפקטים */
 Object.assign(window.I18N.he, {
+  commTitle: 'קהילה', mComm: 'קליפים וסטורי של זמרים, עוקבים ולייקים', profTitle: 'פרופיל', createTitle: 'קליפ חדש', notifTitle: 'התראות',
   back: '→ חזרה', privacyTitle: 'מדיניות פרטיות', privacyHtml: `<h2>🔒 מדיניות פרטיות</h2>
 <p class="muted">עודכן: אוקטובר 2026</p>
 <h3>מה נאסף</h3><ul>
@@ -272,7 +290,10 @@ Object.assign(window.I18N.he, {
 <li><b>אם נרשמת לחשבון:</b> שם, כתובת מייל וסיסמה (שמורה מוצפנת – אף אחד לא יכול לקרוא אותה), ורשימת השירים שלך כדי שתוכל לראות אותם מכל מחשב.</li>
 <li><b>אם פנית ב"צור קשר":</b> השם, המייל וההודעה שכתבת.</li>
 <li><b>שירים שהעלית:</b> נשמרים בשרת לצורך ההפרדה, ונמחקים אוטומטית אחרי 24 שעות – אלא אם שמרת אותם בחשבון או שיתפת אותם.</li>
-<li><b>הקלטות:</b> נשמרות רק במחשב שלך. הן עולות לשרת רק אם בחרת "שתף את הביצוע שלי".</li></ul>
+<li><b>הקלטות:</b> נשמרות רק במחשב שלך. הן עולות לשרת רק אם בחרת "שתף את הביצוע שלי".</li>
+<li><b>קליפים וסטורי בקהילה:</b> מה שאתה מפרסם (וידאו או קול, כיתוב, תגובות ולייקים) נשמר בשרת ומוצג לפי הבחירה שלך – לכולם או רק לעוקבים. סטורי נעלם מהתצוגה אחרי 24 שעות. אפשר למחוק קליפ שלך בכל רגע.</li>
+<li><b>תמונת פרופיל ופרטי פרופיל</b> שבחרת להוסיף.</li></ul>
+<h3>אחריות על תוכן</h3><p>כל משתמש אחראי על מה שהוא מעלה, כולל זכויות על השירים והסכמה של מי שמופיע בקליפ. אסור להעלות תוכן פוגע, לא צנוע או שמפר זכויות. תוכן שדווח ייבדק ויכול להיות מוסתר או נמחק, ומשתמש שמפר את הכללים יכול להיחסם.</p>
 <h3>מה לא עושים</h3><ul><li>לא מוכרים ולא מעבירים מידע לאף אחד.</li><li>לא משתמשים בפרסומות או במעקב של חברות אחרות.</li><li>המייל שלך משמש רק לקודי אימות, איפוס סיסמה ותשובות לפניות שלך.</li></ul>
 <h3>הזכויות שלך</h3><p>אפשר לבקש לראות, לתקן או למחוק את המידע שלך (כולל מחיקת החשבון) – דרך עמוד "צור קשר" או במייל bnyytmrkwt@gmail.com.</p>`, agreePriv: 'בהרשמה אני מסכים/ה ל',
   accTitle: 'החשבון שלי', perfTitle: 'ביצוע ששותף', mAccount: 'הרשמה וכניסה – השירים שלך בכל מחשב', mContact: 'שאלה, רעיון או בעיה? כתבו לנו',
@@ -284,6 +305,7 @@ Object.assign(window.I18N.he, {
   privacyNote: 'האתר סופר כניסות באופן אנונימי כדי לשפר את השירות.'
 });
 Object.assign(window.I18N.en, {
+  commTitle: 'Community', mComm: 'Singers\' clips and stories, follows and likes', profTitle: 'Profile', createTitle: 'New clip', notifTitle: 'Notifications',
   back: '← Back', privacyTitle: 'Privacy policy', privacyHtml: `<h2>🔒 Privacy policy</h2>
 <p class="muted">Updated: October 2026</p>
 <h3>What we collect</h3><ul>
@@ -291,7 +313,9 @@ Object.assign(window.I18N.en, {
 <li><b>If you create an account:</b> name, email and password (stored encrypted), and your song list so you can see it on any computer.</li>
 <li><b>If you contact us:</b> your name, email and message.</li>
 <li><b>Uploaded songs:</b> kept on the server for separation and deleted automatically after 24 hours, unless saved to your account or shared.</li>
-<li><b>Recordings:</b> stay on your computer; they are uploaded only if you choose "Share my performance".</li></ul>
+<li><b>Recordings:</b> stay on your computer; they are uploaded only if you choose "Share my performance".</li>
+<li><b>Community clips & stories:</b> what you post (video or voice, caption, comments, likes) is stored on the server and shown per your choice – everyone or followers only. Stories disappear after 24 hours. You can delete your clips anytime.</li></ul>
+<h3>Content responsibility</h3><p>Each user is responsible for what they upload, including song rights and consent of anyone appearing. Offensive or infringing content may be hidden or deleted, and violating users may be blocked.</p>
 <h3>What we don't do</h3><ul><li>We don't sell or share your data.</li><li>No ads or third-party tracking.</li><li>Your email is used only for codes, password reset and replies.</li></ul>
 <h3>Your rights</h3><p>You can ask to see, correct or delete your data (including your account) via the Contact page or bnyytmrkwt@gmail.com.</p>`, agreePriv: 'By signing up I agree to the ',
   accTitle: 'My account', perfTitle: 'Shared performance', mAccount: 'Sign up and sign in – your songs on every computer', mContact: 'A question, idea or problem? Write to us',

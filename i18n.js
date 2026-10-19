@@ -68,7 +68,7 @@ he: {
   skip: 'דלג', next: 'הבא', letsGo: 'יאללה!',
   guideHtml: `<h2>📖 מדריך שימוש מלא</h2>
 <p class="muted">כל מה שיש באתר, עמוד אחרי עמוד. לחצו על נושא כדי לקפוץ אליו.</p>
-<nav class="gtoc"><a href="#g-start">🚀 לפני הכל</a><a href="#g-home">🏠 תפריט ראשי</a><a href="#g-studio">🎙️ אולפן</a><a href="#g-lyrics">📝 מילים</a><a href="#g-rec">⏺ הקלטה ואפקטים</a><a href="#g-export">⬇ ייצוא ושיתוף</a><a href="#g-lib">🎵 השירים שלי</a><a href="#g-party">🎉 ערב קריוקי</a><a href="#g-phone">📱 הטלפון כשלט</a><a href="#g-practice">🎯 תרגול</a><a href="#g-acc">👤 חשבון</a><a href="#g-contact">✉️ צור קשר</a><a href="#g-settings">⚙️ הגדרות</a><a href="#g-admin">🛠 לוח מנהל</a><a href="#g-keys">⌨️ קיצורים</a></nav>
+<nav class="gtoc"><a href="#g-start">🚀 לפני הכל</a><a href="#g-home">🏠 תפריט ראשי</a><a href="#g-studio">🎙️ אולפן</a><a href="#g-lyrics">📝 מילים</a><a href="#g-rec">⏺ הקלטה ואפקטים</a><a href="#g-export">⬇ ייצוא ושיתוף</a><a href="#g-lib">🎵 השירים שלי</a><a href="#g-party">🎉 ערב קריוקי</a><a href="#g-phone">📱 הטלפון כשלט</a><a href="#g-acc">👤 חשבון</a><a href="#g-contact">✉️ צור קשר</a><a href="#g-settings">⚙️ הגדרות</a><a href="#g-admin">🛠 לוח מנהל</a><a href="#g-keys">⌨️ קיצורים</a></nav>
 
 <h3 id="g-start">🚀 לפני הכל – השרת</h3>
 <p>הפרדת שירים, חשבונות, ערב קריוקי עם טלפונים, שיתוף בקישור ולוח המנהל עובדים דרך השרת שרץ על המחשב שלך. כשהשרת דולק – האתר מוצא אותו לבד. בלי השרת אפשר עדיין לנגן שירים ששמרת במחשב, לתרגל ולהשתמש בחלק מהכלים.</p>
@@ -150,9 +150,6 @@ he: {
 <li><b>שולחים תגובות</b> 👏🎉❤️🔥😂😮 – הן עפות על מסך הטלוויזיה עם השם, ונשמע קול קהל.</li>
 <li>רואים את התור, טבלת המובילים, האתגר ומה הגלגל בחר.</li></ul>
 
-<h3 id="g-practice">🎯 תרגול</h3>
-<ul><li><b>חימום קולי</b> – לוחצים על תרגיל, מקשיבים ושרים אחריו. המיקרופון מראה אם אתה מדויק ואיזה תו אתה שר.</li>
-<li><b>מטרונום</b> – קובעים קצב ולוחצים הפעל/עצור.</li></ul>
 
 <h3 id="g-acc">👤 החשבון שלי</h3>
 <ul><li><b>הרשמה:</b> שם, מייל וסיסמה (לפחות 6 תווים). נשלח קוד בן 6 ספרות למייל – מקלידים אותו וזהו.</li>
@@ -248,7 +245,7 @@ en: {
   skip: 'Skip', next: 'Next', letsGo: "Let's go!",
   guideHtml: `<h2>📖 Complete guide</h2>
 <p class="muted">Everything on the site, page by page. Click a topic to jump to it.</p>
-<nav class="gtoc"><a href="#g-start">🚀 First</a><a href="#g-home">🏠 Menu</a><a href="#g-studio">🎙️ Studio</a><a href="#g-lyrics">📝 Lyrics</a><a href="#g-rec">⏺ Recording & effects</a><a href="#g-export">⬇ Export & share</a><a href="#g-lib">🎵 My songs</a><a href="#g-party">🎉 Karaoke night</a><a href="#g-phone">📱 Phone remote</a><a href="#g-practice">🎯 Practice</a><a href="#g-acc">👤 Account</a><a href="#g-contact">✉️ Contact</a><a href="#g-settings">⚙️ Settings</a><a href="#g-admin">🛠 Admin</a><a href="#g-keys">⌨️ Shortcuts</a></nav>
+<nav class="gtoc"><a href="#g-start">🚀 First</a><a href="#g-home">🏠 Menu</a><a href="#g-studio">🎙️ Studio</a><a href="#g-lyrics">📝 Lyrics</a><a href="#g-rec">⏺ Recording & effects</a><a href="#g-export">⬇ Export & share</a><a href="#g-lib">🎵 My songs</a><a href="#g-party">🎉 Karaoke night</a><a href="#g-phone">📱 Phone remote</a><a href="#g-acc">👤 Account</a><a href="#g-contact">✉️ Contact</a><a href="#g-settings">⚙️ Settings</a><a href="#g-admin">🛠 Admin</a><a href="#g-keys">⌨️ Shortcuts</a></nav>
 <h3 id="g-start">🚀 First – the server</h3><p>Song separation, accounts, phone remotes, share links and the admin panel run through the server on your computer. When it is on, the site finds it automatically. Without it you can still play saved songs and practice.</p>
 <h3 id="g-home">🏠 Menu & navigation</h3><ul><li>Press <b>"Get started"</b> on the welcome screen to reach the menu.</li><li>Every page has a <b>"← Back"</b> button and a <b>"🏠 Main menu"</b> button.</li><li>Top bar: language, dark/light mode, and <b>👤</b> for your account.</li></ul>
 <h3 id="g-studio">🎙️ Studio</h3><ul><li>Drop a song file, choose a file, or paste a YouTube link. Choose 2 stems (vocals + backing) or 4 stems.</li><li>Separation takes about 1–4 minutes.</li><li>Play/stop/skip, click the waveform to jump. <b>Karaoke/Original</b>, <b>🎧 Guide mode</b> (original vocals quietly in the background).</li><li>Mixer with volume, mute and download per stem. <b>Key</b> and <b>Speed</b>, <b>A–B loop</b>, markers, countdown, metronome, fullscreen.</li><li><b>Crowd</b> buttons: applause, cheers, wow, drumroll, horn, laugh.</li><li><b>Save to my songs</b> keeps the song on your computer forever.</li></ul>
@@ -258,7 +255,6 @@ en: {
 <h3 id="g-lib">🎵 My songs</h3><ul><li>Search, favorites, recent, tags, family profiles.</li><li>Playlists – play in a row, <b>👥 Share</b> a playlist link with friends.</li><li>Progress chart of your scores.</li></ul>
 <h3 id="g-party">🎉 Karaoke night</h3><ul><li><b>📺 TV stage screen</b> – fullscreen with next singer, queue, leaderboard and join code.</li><li><b>📱 Connect phones</b> – creates a room and shows a <b>QR code</b> (server must be on).</li><li>Modes: free, <b>competition</b>, <b>teams</b>.</li><li>Queue: add, move up, remove, pick team. <b>▶ Next singer</b> → song fullscreen → <b>star voting</b> → score and confetti.</li><li>Record every performance, <b>🎡 wheel</b> of singers/songs, <b>🎯 challenges</b> with bonus, <b>🎂 birthday mode</b>, <b>friend profiles</b>.</li><li><b>🏆 End of night</b> podium, <b>📜 certificates</b>, <b>🎬 summary video</b>, <b>💿 album ZIP</b>, new evening.</li></ul>
 <h3 id="g-phone">📱 Phone remote (guests)</h3><ul><li>Scan the QR, type your name (and team), join.</li><li>Pick songs (up to 3), rate the singer 1–5 stars, send reactions that fly on the TV.</li></ul>
-<h3 id="g-practice">🎯 Practice</h3><ul><li>Vocal warm-ups with a pitch meter, and a metronome.</li></ul>
 <h3 id="g-acc">👤 My account</h3><ul><li>Sign up with name, email and password – confirm with the 6-digit code from your email.</li><li>Sign in, forgot password (code by email), sync your songs across computers.</li></ul>
 <h3 id="g-contact">✉️ Contact</h3><p>Send us a message; you get an email confirmation.</p>
 <h3 id="g-settings">⚙️ Settings</h3><ul><li>Server address and test, storage used, delete all, links, install as an app.</li></ul>

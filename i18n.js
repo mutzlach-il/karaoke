@@ -68,7 +68,7 @@ he: {
   skip: 'דלג', next: 'הבא', letsGo: 'יאללה!',
   guideHtml: `<h2>📖 מדריך שימוש מלא</h2>
 <p class="muted">כל מה שיש באתר, עמוד אחרי עמוד. לחצו על נושא כדי לקפוץ אליו.</p>
-<nav class="gtoc"><a href="#g-start">🚀 לפני הכל</a><a href="#g-home">🏠 תפריט ראשי</a><a href="#g-comm">🌟 קהילה</a><a href="#g-limits">🎟 מכסות</a><a href="#g-studio">🎙️ אולפן</a><a href="#g-lyrics">📝 מילים</a><a href="#g-rec">⏺ הקלטה ואפקטים</a><a href="#g-export">⬇ ייצוא ושיתוף</a><a href="#g-lib">🎵 השירים שלי</a><a href="#g-party">🎉 ערב קריוקי</a><a href="#g-phone">📱 הטלפון כשלט</a><a href="#g-acc">👤 חשבון</a><a href="#g-contact">✉️ צור קשר</a><a href="#g-settings">⚙️ הגדרות</a><a href="#g-admin">🛠 לוח מנהל</a><a href="#g-keys">⌨️ קיצורים</a></nav>
+<nav class="gtoc"><a href="#g-start">🚀 לפני הכל</a><a href="#g-home">🏠 תפריט ראשי</a><a href="#g-comm">🌟 קהילה</a><a href="#g-limits">🎟 מכסות</a><a href="#g-studio">🎙️ אולפן</a><a href="#g-lyrics">📝 מילים</a><a href="#g-rec">⏺ הקלטה ואפקטים</a><a href="#g-export">⬇ ייצוא ושיתוף</a><a href="#g-lib">🎵 השירים שלי</a><a href="#g-party">🎉 ערב קריוקי</a><a href="#g-phone">📱 הטלפון כשלט</a><a href="#g-acc">👤 חשבון</a><a href="#g-contact">✉️ צור קשר</a><a href="#g-settings">⚙️ הגדרות</a><a href="#g-keys">⌨️ קיצורים</a></nav>
 
 <h3 id="g-start">🚀 לפני הכל – השרת</h3>
 <p>הפרדת שירים, חשבונות, ערב קריוקי עם טלפונים, שיתוף בקישור ולוח המנהל עובדים דרך השרת שרץ על המחשב שלך. כשהשרת דולק – האתר מוצא אותו לבד. בלי השרת אפשר עדיין לנגן שירים ששמרת במחשב, לתרגל ולהשתמש בחלק מהכלים.</p>
@@ -177,17 +177,9 @@ he: {
 <h3 id="g-settings">⚙️ הגדרות</h3>
 <ul><li><b>כתובת השרת</b> – בדרך כלל נמצאת לבד. "בדוק" מראה אם השרת מחובר.</li>
 <li><b>שמירה במחשב</b> – כמה מקום תופסים השירים, ומחיקת הכל.</li>
-<li>קישורים לצור קשר, לחשבון וללוח המנהל.</li>
+<li>קישורים לצור קשר ולחשבון.</li>
 <li><b>התקנה כאפליקציה</b> – כשהדפדפן מאפשר, מופיע למעלה כפתור "התקן" שיוצר אייקון במחשב.</li></ul>
 
-<h3 id="g-admin">🛠 לוח מנהל (רק לבעל האתר)</h3>
-<ul><li>נכנסים עם סיסמת המנהל (בקובץ admin-key.txt בתיקיית השרת).</li>
-<li><b>📊 כניסות</b> – מבקרים היום, השבוע והחודש, גרף של 30 יום, מדינות, מכשירים, מאיפה הגיעו, עמודים, שפה ופעולות.</li>
-<li><b>👥 משתמשים</b> – כל הנרשמים, מתי נכנסו לאחרונה, כמה שירים, חיפוש וחסימה.</li>
-<li><b>✉ הודעות</b> – פניות מ"צור קשר", עם סימון "טופל".</li>
-<li><b>📤 מיילים שנשלחו</b> – כל המיילים שהמערכת שלחה (כולל קודי אימות).</li>
-<li><b>📢 הודעה לכולם</b> – הודעה שמופיעה בראש האתר לכל המבקרים.</li>
-<li><b>🖥 שרת ושירים</b> – כמה שירים הופרדו, שגיאות, תור וזמן ממוצע.</li></ul>
 
 <h3 id="g-keys">⌨️ קיצורי מקשים</h3>
 <p>רווח – נגן/עצור (ובזמן תזמון – סימון שורה). Esc – יציאה ממסך הבמה.</p>`
@@ -260,7 +252,7 @@ en: {
   skip: 'Skip', next: 'Next', letsGo: "Let's go!",
   guideHtml: `<h2>📖 Complete guide</h2>
 <p class="muted">Everything on the site, page by page. Click a topic to jump to it.</p>
-<nav class="gtoc"><a href="#g-start">🚀 First</a><a href="#g-home">🏠 Menu</a><a href="#g-comm">🌟 Community</a><a href="#g-limits">🎟 Limits</a><a href="#g-studio">🎙️ Studio</a><a href="#g-lyrics">📝 Lyrics</a><a href="#g-rec">⏺ Recording & effects</a><a href="#g-export">⬇ Export & share</a><a href="#g-lib">🎵 My songs</a><a href="#g-party">🎉 Karaoke night</a><a href="#g-phone">📱 Phone remote</a><a href="#g-acc">👤 Account</a><a href="#g-contact">✉️ Contact</a><a href="#g-settings">⚙️ Settings</a><a href="#g-admin">🛠 Admin</a><a href="#g-keys">⌨️ Shortcuts</a></nav>
+<nav class="gtoc"><a href="#g-start">🚀 First</a><a href="#g-home">🏠 Menu</a><a href="#g-comm">🌟 Community</a><a href="#g-limits">🎟 Limits</a><a href="#g-studio">🎙️ Studio</a><a href="#g-lyrics">📝 Lyrics</a><a href="#g-rec">⏺ Recording & effects</a><a href="#g-export">⬇ Export & share</a><a href="#g-lib">🎵 My songs</a><a href="#g-party">🎉 Karaoke night</a><a href="#g-phone">📱 Phone remote</a><a href="#g-acc">👤 Account</a><a href="#g-contact">✉️ Contact</a><a href="#g-settings">⚙️ Settings</a><a href="#g-keys">⌨️ Shortcuts</a></nav>
 <h3 id="g-start">🚀 First – the server</h3><p>Song separation, accounts, phone remotes, share links and the admin panel run through the server on your computer. When it is on, the site finds it automatically. Without it you can still play saved songs and practice.</p>
 <h3 id="g-home">🏠 Menu & navigation</h3><ul><li>Press <b>"Get started"</b> on the welcome screen to reach the menu.</li><li>Every page has a <b>"← Back"</b> button and a <b>"🏠 Main menu"</b> button.</li><li>Top bar: language, dark/light mode, and <b>👤</b> for your account.</li></ul>
 <h3 id="g-comm">🌟 Community</h3><ul><li><b>Feed</b> tabs: For you, Following, New, This week (top singers, hot tags, weekly challenge).</li><li><b>Stories</b> disappear after 24 hours.</li><li><b>🎬 New clip</b>: pick a song and start point, video or voice-only (animated background), clip or story, up to 60s, caption with #tags, public or followers-only.</li><li>Like, comment, <b>duet</b>, share, report. Profiles with photo, bio and follow. Invite friends for bonus songs. Notifications. Clips from a karaoke night are collected on the event page.</li></ul>
@@ -275,7 +267,6 @@ en: {
 <h3 id="g-acc">👤 My account</h3><ul><li>Sign up with name, email and password – confirm with the 6-digit code from your email.</li><li>Sign in, forgot password (code by email), sync your songs across computers.</li></ul>
 <h3 id="g-contact">✉️ Contact</h3><p>Send us a message; you get an email confirmation.</p>
 <h3 id="g-settings">⚙️ Settings</h3><ul><li>Server address and test, storage used, delete all, links, install as an app.</li></ul>
-<h3 id="g-admin">🛠 Admin panel (site owner)</h3><ul><li>Password in admin-key.txt. Visits, users (search/block), messages, sent emails, site-wide announcement, server stats.</li></ul>
 <h3 id="g-keys">⌨️ Shortcuts</h3><p>Space – play/pause (or mark a line while syncing). Esc – leave the stage screen.</p>`
 }
 };

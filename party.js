@@ -112,6 +112,7 @@ async function renderParty(soft) {
   box.innerHTML = `
   <div class="card partyhero">
     <div class="row"><h2 class="grow" style="margin:0">🎉 ${t('tabParty')}</h2>
+      <button class="btn big2" id="pClip">🎬 ${L('צלם קליפ מהערב', 'Film a clip')}</button>
       <button class="btn pri big2" id="pStage">📺 ${L('מסך במה לטלוויזיה', 'TV stage screen')}</button></div>
     <p class="muted">${L('מחברים את המחשב לטלוויזיה, לוחצים "מסך במה" – והאורחים מצטרפים מהטלפון שלהם עם הקוד.', 'Connect the computer to the TV, press "TV stage screen" – guests join from their phones with the code.')}</p>
     <div class="roombox">${ROOM ? `${qrImg(roomLink(), 5)}<div><div class="muted">${L('קוד החדר', 'Room code')}</div><div class="rcode">${ROOM.code}</div>
@@ -203,6 +204,7 @@ function addToQueue(name, songId, title, team) {
 function bindParty() {
   const on = (id, fn) => { const e = $('#' + id); if (e) e.onclick = fn; };
   on('pStage', () => openStage());
+  on('pClip', () => { location.hash = 'create'; });
   on('pRoom', () => openRoom());
   on('pCopy', async () => { try { await navigator.clipboard.writeText(roomLink()); toast(t('linkCopied')); } catch { ask(t('copyLink'), roomLink()); } });
   on('pClose', () => { ROOM = null; ROOMST = null; store.set('room', null); renderParty(); });
@@ -258,11 +260,11 @@ function stageControls() {
     <button class="btn" data-sa="wheel">🎡</button><button class="btn" data-sa="chal">🎯</button>
     ${EV.birthday ? `<button class="btn" data-sa="bday">🎂</button>` : ''}
     <button class="btn" data-sa="clap">👏</button><button class="btn" data-sa="drum">🥁</button>
-    <button class="btn" data-sa="end">🏆</button><button class="btn" data-sa="close">✕</button></div>`;
+    <button class="btn" data-sa="end">🏆</button>${ROOM ? `<button class="btn" data-sa="evpage">🎞</button>` : ''}<button class="btn" data-sa="close">✕</button></div>`;
 }
 function bindStage(s) {
   const A = { next: nextSinger, wheel: wheelSingers, chal: pickChallenge, bday: birthdayStage, clap: () => crowd('clap'), drum: () => crowd('drum'),
-    end: podium, close: closeStage, back: () => { STAGE.mode = 'lobby'; renderStage(); } };
+    end: podium, evpage: () => { closeStage(); location.hash = 'event?code=' + ROOM.code; }, close: closeStage, back: () => { STAGE.mode = 'lobby'; renderStage(); } };
   s.querySelectorAll('[data-sa]').forEach(b => { if (A[b.dataset.sa]) b.onclick = () => A[b.dataset.sa](); });
 }
 function renderStageLobbyPeople() { const el = $('#stagePeople'); if (el && ROOMST) el.textContent = Object.keys(ROOMST.people || {}).length; }
@@ -561,7 +563,7 @@ function renderRemote() {
   const EMO = [['clap', '👏'], ['cheer', '🎉'], ['heart', '❤️'], ['fire', '🔥'], ['laugh', '😂'], ['wow', '😮']];
   const tt = { A: 0, B: 0 }; (st.scores || []).forEach(s => { if (s.team) tt[s.team] += s.score; });
   box.innerHTML = `${bday}
-    <div class="card rmhead"><span>🎤 ${L('חדר', 'Room')} <b>${RM.code}</b></span><span>${L('שלום', 'Hi')} ${esc(me.name)} ${me.team ? teamChipR(st, me.team) : ''}</span></div>
+    <div class="card rmhead"><span>🎤 ${L('חדר', 'Room')} <b>${RM.code}</b> · <a href="?event=${RM.code}&srv=${encodeURIComponent(RM.srv)}">🎞 ${L('קליפים מהערב', 'Clips from tonight')}</a></span><span>${L('שלום', 'Hi')} ${esc(me.name)} ${me.team ? teamChipR(st, me.team) : ''}</span></div>
     ${st.wheel && Date.now() / 1000 - st.wheel.t < 20 ? `<div class="card chalbox big">🎡 ${L('הגלגל בחר', 'The wheel picked')}: <b>${esc(st.wheel.result)}</b></div>` : ''}
     <div class="card"><h3>${now ? `🎙 ${L('על הבמה', 'On stage')}: ${esc(now.name)}` : L('אין כרגע מישהו על הבמה', 'No one on stage right now')}</h3>
       ${now ? `<div class="muted">${esc(now.title)}</div><div class="bigstars sm">${[1, 2, 3, 4, 5].map(n => `<button data-v="${n}" class="${n <= (RM.myVote[now.eid] || 0) ? 'on' : ''}">★</button>`).join('')}</div>
